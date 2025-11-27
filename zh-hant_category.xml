@@ -1,3 +1,5 @@
 <xml>
 <category><name>%{BKY_XIAOBAI}</name><lang>小白積木</lang></category>
+<category><name>%{BKY_HX711}</name><lang>HX711 稱重模組</lang></category>
+<category><name>%{BKY_ESP32_IO}</name><lang>ESP32 數位/類比</lang></category>
 </xml>
