@@ -1,6 +1,12 @@
-﻿// 使用同步 AJAX 載入子模組
+﻿// 動態檢測當前腳本路徑
 (function () {
-    var basePath = 'customBlocks/xiaobai/';
+    var currentScript = document.currentScript || (function () {
+        var scripts = document.getElementsByTagName('script');
+        return scripts[scripts.length - 1];
+    })();
+
+    var basePath = currentScript.src.substring(0, currentScript.src.lastIndexOf('/') + 1);
+
     var scripts = [
         basePath + 'src/hx711/javascript.js',
         basePath + 'src/esp32/javascript.js'

@@ -1,6 +1,13 @@
-﻿// 使用同步 AJAX 載入子模組（確保在 toolbox 渲染前完成）
+﻿// 動態檢測當前腳本路徑，支援本機和遠端載入
 (function () {
-    var basePath = 'customBlocks/xiaobai/';
+    // 取得當前腳本的完整 URL
+    var currentScript = document.currentScript || (function () {
+        var scripts = document.getElementsByTagName('script');
+        return scripts[scripts.length - 1];
+    })();
+
+    var basePath = currentScript.src.substring(0, currentScript.src.lastIndexOf('/') + 1);
+
     var scripts = [
         basePath + 'src/hx711/blocks.js',
         basePath + 'src/esp32/blocks.js'
