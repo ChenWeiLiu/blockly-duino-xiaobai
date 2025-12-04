@@ -1,10 +1,17 @@
-﻿// 載入 ESP32 積木定義
-var script2 = document.createElement('script');
-script2.src = './src/esp32/blocks.js';
-document.head.appendChild(script2);
+﻿// 使用同步 AJAX 載入子模組（確保在 toolbox 渲染前完成）
+(function () {
+    var basePath = 'customBlocks/xiaobai/';
+    var scripts = [
+        basePath + 'src/hx711/blocks.js',
+        basePath + 'src/esp32/blocks.js'
+    ];
 
-// 載入 HX711 積木定義
-var script1 = document.createElement('script');
-script1.src = './src/hx711/blocks.js';
-document.head.appendChild(script1);
-
+    for (var i = 0; i < scripts.length; i++) {
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', scripts[i], false); // 同步請求
+        xhr.send();
+        if (xhr.status === 200) {
+            eval(xhr.responseText);
+        }
+    }
+})();

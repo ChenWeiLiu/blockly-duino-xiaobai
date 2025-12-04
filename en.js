@@ -2,12 +2,20 @@
 Blockly.Msg["XIAOBAI"] = "Xiaobai Blocks";
 Blockly.Msg["XIAOBAI_HUE"] = "160";
 
-// 載入 HX711 英文翻譯
-var script1 = document.createElement('script');
-script1.src = './src/hx711/en.js';
-document.head.appendChild(script1);
+// 使用同步 AJAX 載入子模組
+(function () {
+    var basePath = 'customBlocks/xiaobai/';
+    var scripts = [
+        basePath + 'src/hx711/en.js',
+        basePath + 'src/esp32/en.js'
+    ];
 
-// 載入 ESP32 英文翻譯
-var script2 = document.createElement('script');
-script2.src = './src/esp32/en.js';
-document.head.appendChild(script2);
+    for (var i = 0; i < scripts.length; i++) {
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', scripts[i], false);
+        xhr.send();
+        if (xhr.status === 200) {
+            eval(xhr.responseText);
+        }
+    }
+})();
