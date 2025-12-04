@@ -1,0 +1,5 @@
+<xml>
+<category><name>%{BKY_XIAOBAI}</name><lang>XiaoBai Blocks</lang></category>
+<category><name>%{BKY_HX711}</name><lang>HX711 Load Cell</lang></category>
+<category><name>%{BKY_ESP32_IO}</name><lang>ESP32 Digital/Analog</lang></category>
+</xml>

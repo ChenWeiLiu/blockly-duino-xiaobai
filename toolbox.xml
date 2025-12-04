@@ -1,51 +1,6 @@
-<category id="category_xiaobai" name="%{BKY_XIAOBAI}" colour="%{BKY_XIAOBAI_HUE}">
-    <category id="category_hx711" name="%{BKY_HX711}" colour="%{BKY_XIAOBAI_HUE}">
-        <!-- HX711 初始化 -->
-        <block type="hx711_init">
-            <field name="NUM">1</field>
-            <field name="DOUT">2</field>
-            <field name="SCK">3</field>
-        </block>
-        
-        <!-- HX711 讀取重量 -->
-        <block type="hx711_read">
-            <field name="NUM">1</field>
-        </block>
-        
-        <!-- HX711 去皮歸零 -->
-        <block type="hx711_tare">
-            <field name="NUM">1</field>
-        </block>
-        
-        <!-- HX711 校準 -->
-        <block type="hx711_calibrate">
-            <field name="NUM">1</field>
-            <value name="SCALE">
-                <shadow type="math_number">
-                    <field name="NUM">1</field>
-                </shadow>
-            </value>
-        </block>
-        
-        <!-- HX711 讀取原始值 -->
-        <block type="hx711_read_raw">
-            <field name="NUM">1</field>
-        </block>
-        
-        <!-- HX711 設定增益 -->
-        <block type="hx711_set_gain">
-            <field name="NUM">1</field>
-            <field name="GAIN">128</field>
-        </block>
-        
-        <!-- HX711 檢測是否準備好 -->
-        <block type="hx711_is_ready">
-            <field name="NUM">1</field>
-        </block>
-    </category>
-    
-    <!-- ESP32 數位/類比 I/O -->
-    <category id="category_esp32_io" name="%{BKY_ESP32_IO}" colour="%{BKY_ESP32_HUE}">
+﻿<category id="category_xiaobai" name="%{BKY_XIAOBAI}" colour="%{BKY_XIAOBAI_HUE}">
+    <!-- ========== ESP32 模組 ========== -->
+    <category id="category_esp32_io" name="%{BKY_ESP32_IO}" colour="200">
         <!-- 引腳模式設定 -->
         <block type="esp32_pin_mode">
             <field name="PIN">2</field>
@@ -116,4 +71,51 @@
             </value>
         </block>
     </category>
+    <!-- ========== HX711 模組 ========== -->
+    <category id="category_hx711" name="%{BKY_HX711}" colour="%{BKY_XIAOBAI_HUE}">
+        <!-- HX711 初始化 -->
+        <block type="hx711_init">
+            <field name="NUM">1</field>
+            <field name="DOUT">2</field>
+            <field name="SCK">3</field>
+        </block>
+        
+        <!-- HX711 讀取重量 -->
+        <block type="hx711_read">
+            <field name="NUM">1</field>
+        </block>
+        
+        <!-- HX711 去皮歸零 -->
+        <block type="hx711_tare">
+            <field name="NUM">1</field>
+        </block>
+        
+        <!-- HX711 校準 -->
+        <block type="hx711_calibrate">
+            <field name="NUM">1</field>
+            <value name="SCALE">
+                <shadow type="math_number">
+                    <field name="NUM">1</field>
+                </shadow>
+            </value>
+        </block>
+        
+        <!-- HX711 讀取原始值 -->
+        <block type="hx711_read_raw">
+            <field name="NUM">1</field>
+        </block>
+        
+        <!-- HX711 設定增益 -->
+        <block type="hx711_set_gain">
+            <field name="NUM">1</field>
+            <field name="GAIN">128</field>
+        </block>
+        
+        <!-- HX711 檢測是否準備好 -->
+        <block type="hx711_is_ready">
+            <field name="NUM">1</field>
+        </block>
+    </category>
+    
+
 </category>
