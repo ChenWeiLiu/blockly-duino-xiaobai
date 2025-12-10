@@ -29,22 +29,6 @@ Blockly.Arduino['esp32_analog_read'] = function (block) {
     return [code, Blockly.Arduino.ORDER_ATOMIC];
 };
 
-// ESP32 PWM 輸出
-Blockly.Arduino['esp32_pwm_write'] = function (block) {
-    var pin = block.getFieldValue('PIN');
-    var channel = Blockly.Arduino.valueToCode(block, 'CHANNEL',
-        Blockly.Arduino.ORDER_ATOMIC) || '0';
-    var value = Blockly.Arduino.valueToCode(block, 'VALUE',
-        Blockly.Arduino.ORDER_ATOMIC) || '0';
-
-    // 使用 ledcAttachChannel 替代 ledcAttach，參數順序：pin, freq, resolution, channel
-    Blockly.Arduino.setups_['setup_pwm_attach_' + pin + '_' + channel] =
-        'ledcAttachChannel(' + pin + ', 5000, 8, ' + channel + ');';
-
-    var code = 'ledcWrite(' + pin + ', ' + value + ');\n';
-    return code;
-};
-
 // ESP32 PWM 設定
 Blockly.Arduino['esp32_pwm_setup'] = function (block) {
     var channel = Blockly.Arduino.valueToCode(block, 'CHANNEL',
@@ -53,12 +37,28 @@ Blockly.Arduino['esp32_pwm_setup'] = function (block) {
         Blockly.Arduino.ORDER_ATOMIC) || '5000';
     var resolution = Blockly.Arduino.valueToCode(block, 'RESOLUTION',
         Blockly.Arduino.ORDER_ATOMIC) || '8';
-    var pin = '2';  // 預設腳位，實際會在 pwm_write 中設定
 
+    // 使用 ledcSetup 設定 PWM 通道參數
     Blockly.Arduino.setups_['setup_pwm_config_' + channel] =
-        '// PWM 通道 ' + channel + ' 設定: ' + freq + 'Hz, ' + resolution + ' 位元';
+        'ledcSetup(' + channel + ', ' + freq + ', ' + resolution + ');';
 
-    var code = '// PWM 通道 ' + channel + ' 已設定\n';
+    return '';
+};
+
+// ESP32 PWM 輸出
+Blockly.Arduino['esp32_pwm_write'] = function (block) {
+    var pin = block.getFieldValue('PIN');
+    var channel = Blockly.Arduino.valueToCode(block, 'CHANNEL',
+        Blockly.Arduino.ORDER_ATOMIC) || '0';
+    var value = Blockly.Arduino.valueToCode(block, 'VALUE',
+        Blockly.Arduino.ORDER_ATOMIC) || '0';
+
+    // 使用 ledcAttachPin 將腳位連接到通道
+    Blockly.Arduino.setups_['setup_pwm_attach_' + channel + '_pin_' + pin] =
+        'ledcAttachPin(' + pin + ', ' + channel + ');';
+
+    // 使用 ledcWrite 輸出 PWM 值（參數：通道, 數值）
+    var code = 'ledcWrite(' + channel + ', ' + value + ');\n';
     return code;
 };
 
