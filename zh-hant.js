@@ -2,18 +2,15 @@
 Blockly.Msg["XIAOBAI"] = "小白積木";
 Blockly.Msg["XIAOBAI_HUE"] = "160";
 
-// 動態檢測當前腳本路徑
+// 使用固定相對路徑載入子模組
 (function () {
-    var currentScript = document.currentScript || (function () {
-        var scripts = document.getElementsByTagName('script');
-        return scripts[scripts.length - 1];
-    })();
-
-    var basePath = currentScript.src.substring(0, currentScript.src.lastIndexOf('/') + 1);
-
+    var basePath = 'customBlocks/xiaobai/';
     var scripts = [
         basePath + 'src/hx711/zh-hant.js',
-        basePath + 'src/esp32/zh-hant.js'
+        basePath + 'src/serial/zh-hant.js',
+        basePath + 'src/esp32/zh-hant.js',
+        basePath + 'src/ds18b20/zh-hant.js',
+        basePath + 'src/sdcard/zh-hant.js'
     ];
 
     for (var i = 0; i < scripts.length; i++) {

@@ -1,4 +1,59 @@
 ﻿<category id="category_xiaobai" name="%{BKY_XIAOBAI}" colour="%{BKY_XIAOBAI_HUE}">
+    <!-- ========== Serial 序列埠模組 ========== -->
+    <category id="category_serial" name="%{BKY_SERIAL}" colour="%{BKY_XIAOBAI_HUE}">
+        <!-- Serial Begin -->
+        <block type="xiaobai_serial_begin">
+            <field name="SERIAL_NAME">Serial</field>
+            <field name="BAUD_RATE">9600</field>
+        </block>
+        
+        <!-- Serial End -->
+        <block type="xiaobai_serial_end">
+            <field name="SERIAL_NAME">Serial</field>
+        </block>
+        
+        <!-- Serial Print -->
+        <block type="xiaobai_serial_print">
+            <field name="SERIAL_NAME">Serial</field>
+            <value name="TEXT">
+                <shadow type="text">
+                    <field name="TEXT">Hello</field>
+                </shadow>
+            </value>
+        </block>
+        
+        <!-- Serial Println -->
+        <block type="xiaobai_serial_println">
+            <field name="SERIAL_NAME">Serial</field>
+            <value name="TEXT">
+                <shadow type="text">
+                    <field name="TEXT">Hello</field>
+                </shadow>
+            </value>
+        </block>
+        
+        <!-- Serial Available -->
+        <block type="xiaobai_serial_available">
+            <field name="SERIAL_NAME">Serial</field>
+        </block>
+        
+        <!-- Serial Read -->
+        <block type="xiaobai_serial_read">
+            <field name="SERIAL_NAME">Serial</field>
+        </block>
+        
+        <!-- Serial ReadStringUntil -->
+        <block type="xiaobai_serial_readstringuntil">
+            <field name="SERIAL_NAME">Serial</field>
+            <value name="CHAR">
+                <block type="xiaobai_breakline"></block>
+            </value>
+        </block>
+        
+        <!-- Break Line -->
+        <block type="xiaobai_breakline"></block>
+    </category>
+    
     <!-- ========== ESP32 模組 ========== -->
     <category id="category_esp32_io" name="%{BKY_ESP32_IO}" colour="200">
         <!-- 引腳模式設定 -->
@@ -117,5 +172,93 @@
         </block>
     </category>
     
+    <!-- ========== DS18B20 溫度感測器模組 ========== -->
+    <category id="category_ds18b20" name="%{BKY_DS18B20}" colour="%{BKY_XIAOBAI_HUE}">
+        <!-- DS18B20 初始化 -->
+        <block type="xiaobai_ds18b20_init">
+            <field name="PIN">4</field>
+        </block>
+        
+        <!-- DS18B20 請求溫度 -->
+        <block type="xiaobai_ds18b20_request"></block>
+        
+        <!-- DS18B20 讀取攝氏溫度 -->
+        <block type="xiaobai_ds18b20_read_celsius"></block>
+        
+        <!-- DS18B20 讀取華氏溫度 -->
+        <block type="xiaobai_ds18b20_read_fahrenheit"></block>
+    </category>
+    
+    <!-- ========== MicroSD Card 記憶卡模組 ========== -->
+    <category id="category_sdcard" name="%{BKY_SDCARD}" colour="%{BKY_XIAOBAI_HUE}">
+        <!-- SD Card 初始化 -->
+        <block type="xiaobai_sd_init">
+            <field name="CS_PIN">5</field>
+        </block>
+        
+        <!-- SD Card 開啟檔案 -->
+        <block type="xiaobai_sd_open">
+            <field name="MODE">FILE_WRITE</field>
+            <value name="FILENAME">
+                <shadow type="text">
+                    <field name="TEXT">data.txt</field>
+                </shadow>
+            </value>
+        </block>
+        
+        <!-- SD Card 關閉檔案 -->
+        <block type="xiaobai_sd_close"></block>
+        
+        <!-- SD Card 寫入資料 -->
+        <block type="xiaobai_sd_write">
+            <value name="DATA">
+                <shadow type="text">
+                    <field name="TEXT">Hello</field>
+                </shadow>
+            </value>
+        </block>
+        
+        <!-- SD Card 寫入一行 -->
+        <block type="xiaobai_sd_writeln">
+            <value name="DATA">
+                <shadow type="text">
+                    <field name="TEXT">Hello</field>
+                </shadow>
+            </value>
+        </block>
+        
+        <!-- SD Card 讀取一行 -->
+        <block type="xiaobai_sd_readln"></block>
+        
+        <!-- SD Card 檔案有資料可讀取 -->
+        <block type="xiaobai_sd_available"></block>
+        
+        <!-- SD Card 檔案是否存在 -->
+        <block type="xiaobai_sd_exists">
+            <value name="FILENAME">
+                <shadow type="text">
+                    <field name="TEXT">data.txt</field>
+                </shadow>
+            </value>
+        </block>
+        
+        <!-- SD Card 刪除檔案 -->
+        <block type="xiaobai_sd_remove">
+            <value name="FILENAME">
+                <shadow type="text">
+                    <field name="TEXT">data.txt</field>
+                </shadow>
+            </value>
+        </block>
+        
+        <!-- SD Card 建立目錄 -->
+        <block type="xiaobai_sd_mkdir">
+            <value name="DIRNAME">
+                <shadow type="text">
+                    <field name="TEXT">logs</field>
+                </shadow>
+            </value>
+        </block>
+    </category>
 
 </category>

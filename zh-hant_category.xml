@@ -1,5 +1,9 @@
 <xml>
 <category><name>%{BKY_XIAOBAI}</name><lang>小白積木</lang></category>
 <category><name>%{BKY_HX711}</name><lang>HX711 稱重模組</lang></category>
+<category><name>%{BKY_SERIAL}</name><lang>序列埠 I/O</lang></category>
 <category><name>%{BKY_ESP32_IO}</name><lang>ESP32 數位/類比</lang></category>
+<category><name>%{BKY_DS18B20}</name><lang>DS18B20 溫度感測器</lang></category>
+<category><name>%{BKY_SDCARD}</name><lang>MicroSD 記憶卡</lang></category>
 </xml>
+

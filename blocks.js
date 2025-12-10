@@ -1,16 +1,12 @@
-﻿// 動態檢測當前腳本路徑，支援本機和遠端載入
+﻿// 使用固定相對路徑載入子模組（確保在 toolbox 渲染前完成）
 (function () {
-    // 取得當前腳本的完整 URL
-    var currentScript = document.currentScript || (function () {
-        var scripts = document.getElementsByTagName('script');
-        return scripts[scripts.length - 1];
-    })();
-
-    var basePath = currentScript.src.substring(0, currentScript.src.lastIndexOf('/') + 1);
-
+    var basePath = 'customBlocks/xiaobai/';
     var scripts = [
         basePath + 'src/hx711/blocks.js',
-        basePath + 'src/esp32/blocks.js'
+        basePath + 'src/serial/blocks.js',
+        basePath + 'src/esp32/blocks.js',
+        basePath + 'src/ds18b20/blocks.js',
+        basePath + 'src/sdcard/blocks.js'
     ];
 
     for (var i = 0; i < scripts.length; i++) {
