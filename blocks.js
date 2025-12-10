@@ -1,6 +1,23 @@
 ﻿// 使用固定相對路徑載入子模組（確保在 toolbox 渲染前完成）
 (function () {
-    var basePath = '';  // GitHub Pages 使用空路徑，本地使用 'customBlocks/xiaobai/'
+    // 動態檢測基礎路徑
+    var currentScript = document.currentScript || (function () {
+        var scripts = document.getElementsByTagName('script');
+        return scripts[scripts.length - 1];
+    })();
+
+    var basePath = '';
+    if (currentScript && currentScript.src) {
+        var scriptUrl = currentScript.src;
+        // 如果是從 GitHub Pages 載入，使用完整 URL 路徑
+        if (scriptUrl.indexOf('github.io') !== -1) {
+            basePath = scriptUrl.substring(0, scriptUrl.lastIndexOf('/') + 1);
+        } else if (scriptUrl.indexOf('customBlocks/xiaobai/') !== -1) {
+            // 本地路徑
+            basePath = 'customBlocks/xiaobai/';
+        }
+    }
+
     var scripts = [
         basePath + 'src/hx711/blocks.js',
         basePath + 'src/serial/blocks.js',
