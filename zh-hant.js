@@ -4,7 +4,7 @@ Blockly.Msg["XIAOBAI_HUE"] = "160";
 
 // 使用固定相對路徑載入子模組
 (function () {
-    var basePath = 'customBlocks/xiaobai/';
+    var basePath = '';  // GitHub Pages 使用空路徑，本地使用 'customBlocks/xiaobai/'
     var scripts = [
         basePath + 'src/hx711/zh-hant.js',
         basePath + 'src/serial/zh-hant.js',
