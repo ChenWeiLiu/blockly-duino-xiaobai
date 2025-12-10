@@ -4,8 +4,8 @@ Blockly.Arduino['xiaobai_ds18b20_init'] = function (block) {
     var pin = block.getFieldValue('PIN');
 
     // Add library includes
-    Blockly.Arduino.includes_['include_onewire'] = '#include <OneWire.h>';
-    Blockly.Arduino.includes_['include_dallas_temp'] = '#include <DallasTemperature.h>';
+    Blockly.Arduino.definitions_['include_onewire'] = '#include <OneWire.h>';
+    Blockly.Arduino.definitions_['include_dallas_temp'] = '#include <DallasTemperature.h>';
 
     // Create OneWire and DallasTemperature objects
     Blockly.Arduino.definitions_['define_ds18b20_pin'] = 'OneWire oneWire(' + pin + ');';

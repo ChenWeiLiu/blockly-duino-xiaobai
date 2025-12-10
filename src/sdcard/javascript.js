@@ -4,8 +4,8 @@ Blockly.Arduino['xiaobai_sd_init'] = function (block) {
     var cs_pin = block.getFieldValue('CS_PIN');
 
     // Add SD library include
-    Blockly.Arduino.includes_['include_sd'] = '#include <SD.h>';
-    Blockly.Arduino.includes_['include_spi'] = '#include <SPI.h>';
+    Blockly.Arduino.definitions_['include_sd'] = '#include <SD.h>';
+    Blockly.Arduino.definitions_['include_spi'] = '#include <SPI.h>';
 
     // Global file object
     Blockly.Arduino.definitions_['define_sd_file'] = 'File sdFile;';

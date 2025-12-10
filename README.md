@@ -57,6 +57,52 @@ xiaobai/
 
 4. 更新 `en_category.xml` 和 `zh-hant_category.xml`，加入新分類的翻譯
 
+## 路徑設定規則 ⚠️ 重要
+
+### 動態路徑檢測（支援 GitHub Pages 和本地環境）
+
+在 `blocks.js`, `javascript.js`, `en.js`, `zh-hant.js` 中，**必須使用動態路徑檢測**來支援兩種載入環境：
+
+```javascript
+(function () {
+    // 動態檢測基礎路徑
+    var currentScript = document.currentScript || (function() {
+        var scripts = document.getElementsByTagName('script');
+        return scripts[scripts.length - 1];
+    })();
+    
+    var basePath = '';
+    if (currentScript && currentScript.src) {
+        var scriptUrl = currentScript.src;
+        // 如果是從 GitHub Pages 載入，使用完整 URL 路徑
+        if (scriptUrl.indexOf('github.io') !== -1) {
+            basePath = scriptUrl.substring(0, scriptUrl.lastIndexOf('/') + 1);
+        } else if (scriptUrl.indexOf('customBlocks/xiaobai/') !== -1) {
+            // 本地路徑
+            basePath = 'customBlocks/xiaobai/';
+        }
+    }
+    
+    var scripts = [
+        basePath + 'src/模組名稱/檔案.js',
+        // ... 其他模組
+    ];
+
+    for (var i = 0; i < scripts.length; i++) {
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', scripts[i], false);
+        xhr.send();
+        if (xhr.status === 200) {
+            eval(xhr.responseText);
+        }
+    }
+})();
+```
+
+**為什麼需要動態檢測？**
+- 從 GitHub Pages 載入時，相對路徑會解析為本地 `chrome-extension://` 路徑，導致載入失敗
+- 動態檢測可自動判斷載入來源，使用正確的完整 URL 或相對路徑
+
 ## 優點
 
 - ✅ **模組化**：每個功能獨立在自己的資料夾中
@@ -64,9 +110,12 @@ xiaobai/
 - ✅ **無需建置**：直接修改即可，不需要執行 build.ps1
 - ✅ **易於擴充**：新增功能只需建立新資料夾
 - ✅ **不修改核心**：完全不需要修改 BlocklyDuino 的核心檔案
+- ✅ **雙環境支援**：同時支援本地開發和 GitHub Pages 部署
 
 ## 注意事項
 
 - 所有檔案都使用 UTF-8 編碼
-- `document.write` 必須在檔案載入時執行，不能在函式中使用
+- **必須使用動態路徑檢測**（不可使用固定的 `basePath`）
+- `document.write` 必須在檔案載入時執行，不能在函式中使用  
 - 新增模組後記得更新 `toolbox.xml` 和分類翻譯檔案
+- 推送到 GitHub 後需等待 2-3 分鐘讓 GitHub Pages 快取更新
