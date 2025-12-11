@@ -30,7 +30,10 @@ Blockly.Msg["XIAOBAI_SERIAL_READ_TOOLTIP"] = "Read string until specified charac
 
 Blockly.Msg["XIAOBAI_SERIAL_READSTRINGUNTIL"] = "Serial";
 Blockly.Msg["XIAOBAI_SERIAL_READSTRINGUNTIL_TEXT"] = "read string until";
-Blockly.Msg["XIAOBAI_SERIAL_READSTRINGUNTIL_TOOLTIP"] = "Read string until specified character";
+Blockly.Msg.XIAOBAI_SERIAL_READSTRINGUNTIL_TOOLTIP = "Read string from the serial port until the specified character is encountered";
+
+Blockly.Msg.XIAOBAI_SERIAL_READ_RESULT = "Serial read result";
+Blockly.Msg.XIAOBAI_SERIAL_READ_RESULT_TOOLTIP = "Returns the string read from serial port";
 
 Blockly.Msg["XIAOBAI_SERIAL_RECEIVED_STRING"] = "received string";
 Blockly.Msg["XIAOBAI_SERIAL_RECEIVED_STRING_TOOLTIP"] = "Store received string";

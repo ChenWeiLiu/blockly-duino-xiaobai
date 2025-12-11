@@ -30,7 +30,10 @@ Blockly.Msg["XIAOBAI_SERIAL_READ_TOOLTIP"] = "從序列埠讀取字串直到指�
 
 Blockly.Msg["XIAOBAI_SERIAL_READSTRINGUNTIL"] = "序列埠";
 Blockly.Msg["XIAOBAI_SERIAL_READSTRINGUNTIL_TEXT"] = "讀取字串直到出現字串";
-Blockly.Msg["XIAOBAI_SERIAL_READSTRINGUNTIL_TOOLTIP"] = "讀取字串直到指定字元";
+Blockly.Msg.XIAOBAI_SERIAL_READSTRINGUNTIL_TOOLTIP = "從序列埠讀取字串，直到遇到指定的字元為止。讀取到資料時會執行內部的積木。";
+
+Blockly.Msg.XIAOBAI_SERIAL_READ_RESULT = "序列埠讀取結果";
+Blockly.Msg.XIAOBAI_SERIAL_READ_RESULT_TOOLTIP = "返回序列埠讀取到的字串內容";
 
 Blockly.Msg["XIAOBAI_SERIAL_RECEIVED_STRING"] = "讀取到的字串";
 Blockly.Msg["XIAOBAI_SERIAL_RECEIVED_STRING_TOOLTIP"] = "儲存讀取到的字串";

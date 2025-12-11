@@ -123,21 +123,38 @@ Blockly.Blocks['xiaobai_serial_read'] = {
     }
 };
 
-// Serial ReadStringUntil Block
+// Serial ReadStringUntil Block (改良版 - 參考 LinkIt7697)
 Blockly.Blocks['xiaobai_serial_readstringuntil'] = {
     init: function () {
-        this.appendValueInput("CHAR")
-            .setCheck(null)
+        this.appendDummyInput()
             .appendField(Blockly.Msg.XIAOBAI_SERIAL_READSTRINGUNTIL)
             .appendField(new Blockly.FieldDropdown([
                 ["Serial", "Serial"],
                 ["Serial1", "Serial1"],
                 ["Serial2", "Serial2"]
-            ]), "SERIAL_NAME")
+            ]), "SERIAL_NAME");
+        this.appendValueInput("CHAR")
+            .setCheck(null)
             .appendField(Blockly.Msg.XIAOBAI_SERIAL_READSTRINGUNTIL_TEXT);
-        this.setOutput(true, "String");
+        this.appendStatementInput("STATEMENT")
+            .appendField("執行");
+        this.setInputsInline(true);
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
         this.setColour(Blockly.Msg.XIAOBAI_HUE);
         this.setTooltip(Blockly.Msg.XIAOBAI_SERIAL_READSTRINGUNTIL_TOOLTIP);
+        this.setHelpUrl('');
+    }
+};
+
+// Serial Read Result Block (新增 - 用於獲取讀取結果)
+Blockly.Blocks['xiaobai_serial_read_result'] = {
+    init: function () {
+        this.appendDummyInput()
+            .appendField("序列埠讀取結果");
+        this.setOutput(true, "String");
+        this.setColour(Blockly.Msg.XIAOBAI_HUE);
+        this.setTooltip("返回序列埠讀取到的字串內容");
         this.setHelpUrl('');
     }
 };

@@ -41,10 +41,30 @@ Blockly.Arduino['xiaobai_serial_read'] = function (block) {
     return [code, Blockly.Arduino.ORDER_ATOMIC];
 };
 
+// Serial ReadStringUntil Code Generation (改良版)
 Blockly.Arduino['xiaobai_serial_readstringuntil'] = function (block) {
     var serial_name = block.getFieldValue('SERIAL_NAME');
     var char_value = Blockly.Arduino.valueToCode(block, 'CHAR', Blockly.Arduino.ORDER_ATOMIC) || "'\\n'";
-    var code = serial_name + '.readStringUntil(' + char_value + ')';
+    var statements = Blockly.Arduino.statementToCode(block, 'STATEMENT');
+
+    // 定義全域變數 serialStr
+    Blockly.Arduino.definitions_['define_serial_str'] = 'String serialStr = "";';
+
+    // 生成程式碼：當有資料可讀時，讀取直到指定字元，並執行內部積木
+    var code = 'if (' + serial_name + '.available()) {\n' +
+        '  serialStr = "";\n' +
+        '  while (' + serial_name + '.available()) {\n' +
+        '    serialStr = ' + serial_name + '.readStringUntil(' + char_value + ');\n' +
+        '    serialStr.replace("\\r", "");\n' +
+        statements +
+        '  }\n' +
+        '}\n';
+    return code;
+};
+
+// Serial Read Result Code Generation (新增)
+Blockly.Arduino['xiaobai_serial_read_result'] = function (block) {
+    var code = 'serialStr';
     return [code, Blockly.Arduino.ORDER_ATOMIC];
 };
 

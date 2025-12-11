@@ -49,6 +49,9 @@
                 <block type="xiaobai_breakline"></block>
             </value>
         </block>
+
+        <!-- Serial Read Result -->
+        <block type="xiaobai_serial_read_result"></block>
         
         <!-- Break Line -->
         <block type="xiaobai_breakline"></block>
