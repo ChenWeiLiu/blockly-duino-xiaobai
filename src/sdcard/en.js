@@ -10,6 +10,15 @@ Blockly.Msg["XIAOBAI_SD_INIT_TOOLTIP"] = "Initialize SD Card with specified CS (
 Blockly.Msg["XIAOBAI_SD_IS_READY"] = "SD Card is initialized";
 Blockly.Msg["XIAOBAI_SD_IS_READY_TOOLTIP"] = "Check if SD Card initialized successfully";
 
+Blockly.Msg["XIAOBAI_SD_SET_CS"] = "SD Card set CS pin";
+Blockly.Msg["XIAOBAI_SD_SET_CS_TOOLTIP"] = "Dynamically set CS (Chip Select) pin for SD card";
+
+Blockly.Msg["XIAOBAI_SD_READUNTIL_CHAR"] = "SD read from file until char";
+Blockly.Msg["XIAOBAI_SD_READUNTIL_CHAR_TOOLTIP"] = "Read string from file until specified character";
+
+Blockly.Msg["XIAOBAI_SD_READUNTIL_CHAR_ADV"] = "SD file variable";
+Blockly.Msg["XIAOBAI_SD_READUNTIL_CHAR_ADV_TOOLTIP"] = "Read string from specified file variable until character";
+
 Blockly.Msg["XIAOBAI_SD_OPEN"] = "SD open file";
 Blockly.Msg["XIAOBAI_SD_MODE"] = "mode";
 Blockly.Msg["XIAOBAI_SD_MODE_READ"] = "Read";

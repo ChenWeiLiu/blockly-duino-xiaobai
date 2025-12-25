@@ -3,13 +3,11 @@
 Blockly.Arduino['xiaobai_sd_init'] = function (block) {
     var cs_pin = block.getFieldValue('CS_PIN');
 
-    // Add SD library include
-    Blockly.Arduino.definitions_['include_sd'] = '#include <SD.h>';
-    Blockly.Arduino.definitions_['include_spi'] = '#include <SPI.h>';
+    // Add SdFat library include
+    Blockly.Arduino.definitions_['include_sdfat'] = '#include "SdFat.h"';
 
-    // Global file object and status
-    Blockly.Arduino.definitions_['define_sd_file'] = 'File sdFile;';
-    Blockly.Arduino.definitions_['define_sd_ready'] = 'bool sdCardReady = false;';
+    // Global SdFat object and status
+    Blockly.Arduino.definitions_['define_sdfat_object'] = 'SdFat SD;\nbool sdCardReady = false;';
 
     // Initialize SD card in setup
     Blockly.Arduino.setups_['setup_sd'] =
@@ -31,6 +29,18 @@ Blockly.Arduino['xiaobai_sd_is_ready'] = function (block) {
 
     var code = 'sdCardReady';
     return [code, Blockly.Arduino.ORDER_ATOMIC];
+};
+
+Blockly.Arduino['xiaobai_sd_set_cs'] = function (block) {
+    var cs_pin = Blockly.Arduino.valueToCode(block, 'CS_PIN', Blockly.Arduino.ORDER_ATOMIC) || '5';
+
+    // Ensure pinCS variable is defined
+    if (!Blockly.Arduino.definitions_['define_sd_cs']) {
+        Blockly.Arduino.definitions_['define_sd_cs'] = 'int pinCS = SS;';
+    }
+
+    var code = 'pinCS = ' + cs_pin + ';\n';
+    return code;
 };
 
 Blockly.Arduino['xiaobai_sd_open'] = function (block) {
@@ -68,6 +78,41 @@ Blockly.Arduino['xiaobai_sd_readln'] = function (block) {
     return [code, Blockly.Arduino.ORDER_ATOMIC];
 };
 
+Blockly.Arduino['xiaobai_sd_readuntil_char'] = function (block) {
+    var char_val = Blockly.Arduino.valueToCode(block, 'CHAR', Blockly.Arduino.ORDER_ATOMIC) || '"\\n"';
+    char_val = char_val.replace(/"/g, '');
+    char_val = char_val.replace("\\\\", "\\");
+
+    // Define custom readStringUntil function for File objects
+    Blockly.Arduino.definitions_['define_sd_file_read_until_invoke'] =
+        'String readStringUntil(File *filePtr, char myChar) {\n' +
+        '  String myTempStr = "";\n' +
+        '  char nowRead;\n' +
+        '  if (filePtr->available()) {\n' +
+        '    nowRead = filePtr->read();\n' +
+        '    while (nowRead != myChar) {\n' +
+        '      if (myChar != \'\\n\') {\n' +
+        '        if (nowRead != \'\\n\') {\n' +
+        '          myTempStr += nowRead;\n' +
+        '        } else {\n' +
+        '          break;\n' +
+        '        }\n' +
+        '      } else {\n' +
+        '        myTempStr += nowRead;\n' +
+        '      }\n' +
+        '      if (filePtr->available())\n' +
+        '        nowRead = filePtr->read();\n' +
+        '      else\n' +
+        '        break;\n' +
+        '    }\n' +
+        '  }\n' +
+        '  return myTempStr;\n' +
+        '}\n';
+
+    var code = 'readStringUntil(&sdFile, \'' + char_val + '\').c_str()';
+    return [code, Blockly.Arduino.ORDER_ATOMIC];
+};
+
 Blockly.Arduino['xiaobai_sd_available'] = function (block) {
     var code = '(sdFile && sdFile.available())';
     return [code, Blockly.Arduino.ORDER_ATOMIC];
@@ -99,20 +144,19 @@ Blockly.Arduino['xiaobai_sd_init_custom'] = function (block) {
     var miso_pin = Blockly.Arduino.valueToCode(block, 'MISO_PIN', Blockly.Arduino.ORDER_ATOMIC) || '19';
     var sck_pin = Blockly.Arduino.valueToCode(block, 'SCK_PIN', Blockly.Arduino.ORDER_ATOMIC) || '18';
 
-    // Add SD library include
-    Blockly.Arduino.definitions_['include_sd'] = '#include <SD.h>';
+    // Add SdFat library include
+    Blockly.Arduino.definitions_['include_sdfat'] = '#include "SdFat.h"';
     Blockly.Arduino.definitions_['include_spi'] = '#include <SPI.h>';
 
-    // Global file object and status
-    Blockly.Arduino.definitions_['define_sd_file'] = 'File sdFile;';
-    Blockly.Arduino.definitions_['define_sd_ready'] = 'bool sdCardReady = false;';
+    // Global SdFat object and status
+    Blockly.Arduino.definitions_['define_sdfat_object'] = 'SdFat SD;\nbool sdCardReady = false;';
 
     // Custom SPI initialization
     Blockly.Arduino.setups_['setup_sd_spi'] =
         'SPI.begin(' + sck_pin + ', ' + miso_pin + ', ' + mosi_pin + ');';
 
     Blockly.Arduino.setups_['setup_sd'] =
-        'sdCardReady = SD.begin(' + cs_pin + ', SPI);\n' +
+        'sdCardReady = SD.begin(' + cs_pin + ', SD_SCK_MHZ(10));\n' +
         'if (!sdCardReady) {\n' +
         '  Serial.println("SD Card initialization failed!");\n' +
         '} else {\n' +
@@ -126,7 +170,7 @@ Blockly.Arduino['xiaobai_sd_file_var'] = function (block) {
     var var_name = Blockly.Arduino.valueToCode(block, 'VAR_NAME', Blockly.Arduino.ORDER_ATOMIC) || '"sdFile"';
     var_name = var_name.replace(/"/g, ''); // Remove quotes
 
-    // Define file variable globally
+    // Define file variable globally (SdFat uses File type same as SD.h)
     if (!Blockly.Arduino.definitions_['define_sd_file_' + var_name]) {
         Blockly.Arduino.definitions_['define_sd_file_' + var_name] = 'File ' + var_name + ';';
     }
@@ -180,6 +224,45 @@ Blockly.Arduino['xiaobai_sd_readln_adv'] = function (block) {
     var_name = var_name.replace(/"/g, '');
 
     var code = var_name + '.readStringUntil(\'\\n\')';
+    return [code, Blockly.Arduino.ORDER_ATOMIC];
+};
+
+Blockly.Arduino['xiaobai_sd_readuntil_char_adv'] = function (block) {
+    var var_name = Blockly.Arduino.valueToCode(block, 'VAR_NAME', Blockly.Arduino.ORDER_ATOMIC) || '"sdFile"';
+    var_name = var_name.replace(/"/g, '');
+    var char_val = Blockly.Arduino.valueToCode(block, 'CHAR', Blockly.Arduino.ORDER_ATOMIC) || '"\\n"';
+    char_val = char_val.replace(/"/g, '');
+    char_val = char_val.replace("\\\\", "\\");
+
+    // Ensure custom readStringUntil function is defined
+    if (!Blockly.Arduino.definitions_['define_sd_file_read_until_invoke']) {
+        Blockly.Arduino.definitions_['define_sd_file_read_until_invoke'] =
+            'String readStringUntil(File *filePtr, char myChar) {\n' +
+            '  String myTempStr = "";\n' +
+            '  char nowRead;\n' +
+            '  if (filePtr->available()) {\n' +
+            '    nowRead = filePtr->read();\n' +
+            '    while (nowRead != myChar) {\n' +
+            '      if (myChar != \'\\n\') {\n' +
+            '        if (nowRead != \'\\n\') {\n' +
+            '          myTempStr += nowRead;\n' +
+            '        } else {\n' +
+            '          break;\n' +
+            '        }\n' +
+            '      } else {\n' +
+            '        myTempStr += nowRead;\n' +
+            '      }\n' +
+            '      if (filePtr->available())\n' +
+            '        nowRead = filePtr->read();\n' +
+            '      else\n' +
+            '        break;\n' +
+            '    }\n' +
+            '  }\n' +
+            '  return myTempStr;\n' +
+            '}\n';
+    }
+
+    var code = 'readStringUntil(&' + var_name + ', \'' + char_val + '\').c_str()';
     return [code, Blockly.Arduino.ORDER_ATOMIC];
 };
 

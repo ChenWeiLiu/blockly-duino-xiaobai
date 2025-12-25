@@ -10,6 +10,15 @@ Blockly.Msg["XIAOBAI_SD_INIT_TOOLTIP"] = "使用指定的 CS (晶片選擇) 腳�
 Blockly.Msg["XIAOBAI_SD_IS_READY"] = "SD 卡是否已初始化";
 Blockly.Msg["XIAOBAI_SD_IS_READY_TOOLTIP"] = "檢查 SD 記憶卡是否初始化成功";
 
+Blockly.Msg["XIAOBAI_SD_SET_CS"] = "SD 卡設定 CS 腳位";
+Blockly.Msg["XIAOBAI_SD_SET_CS_TOOLTIP"] = "動態設定 SD 卡的 CS (晶片選擇) 腳位";
+
+Blockly.Msg["XIAOBAI_SD_READUNTIL_CHAR"] = "SD 卡從檔案讀取直到字元";
+Blockly.Msg["XIAOBAI_SD_READUNTIL_CHAR_TOOLTIP"] = "從檔案讀取字串直到遇到指定字元";
+
+Blockly.Msg["XIAOBAI_SD_READUNTIL_CHAR_ADV"] = "SD 卡檔案變數";
+Blockly.Msg["XIAOBAI_SD_READUNTIL_CHAR_ADV_TOOLTIP"] = "從指定檔案變數讀取字串直到遇到字元";
+
 Blockly.Msg["XIAOBAI_SD_OPEN"] = "SD 卡開啟檔案";
 Blockly.Msg["XIAOBAI_SD_MODE"] = "模式";
 Blockly.Msg["XIAOBAI_SD_MODE_READ"] = "讀取";

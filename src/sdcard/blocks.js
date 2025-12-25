@@ -47,6 +47,20 @@ Blockly.Blocks['xiaobai_sd_is_ready'] = {
     }
 };
 
+// SD Card Set CS Pin
+Blockly.Blocks['xiaobai_sd_set_cs'] = {
+    init: function () {
+        this.appendValueInput("CS_PIN")
+            .setCheck("Number")
+            .appendField(Blockly.Msg.XIAOBAI_SD_SET_CS);
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
+        this.setColour(Blockly.Msg.XIAOBAI_HUE);
+        this.setTooltip(Blockly.Msg.XIAOBAI_SD_SET_CS_TOOLTIP);
+        this.setHelpUrl('');
+    }
+};
+
 // SD Card File Open Block
 Blockly.Blocks['xiaobai_sd_open'] = {
     init: function () {
@@ -129,6 +143,19 @@ Blockly.Blocks['xiaobai_sd_readln'] = {
         this.setOutput(true, "String");
         this.setColour(Blockly.Msg.XIAOBAI_HUE);
         this.setTooltip(Blockly.Msg.XIAOBAI_SD_READLN_TOOLTIP);
+        this.setHelpUrl('');
+    }
+};
+
+// SD Card Read Until Char Block
+Blockly.Blocks['xiaobai_sd_readuntil_char'] = {
+    init: function () {
+        this.appendValueInput("CHAR")
+            .setCheck("String")
+            .appendField(Blockly.Msg.XIAOBAI_SD_READUNTIL_CHAR);
+        this.setOutput(true, "String");
+        this.setColour(Blockly.Msg.XIAOBAI_HUE);
+        this.setTooltip(Blockly.Msg.XIAOBAI_SD_READUNTIL_CHAR_TOOLTIP);
         this.setHelpUrl('');
     }
 };
@@ -310,6 +337,22 @@ Blockly.Blocks['xiaobai_sd_readln_adv'] = {
         this.setOutput(true, "String");
         this.setColour(Blockly.Msg.XIAOBAI_HUE);
         this.setTooltip(Blockly.Msg.XIAOBAI_SD_READLN_ADV_TOOLTIP);
+        this.setHelpUrl('');
+    }
+};
+
+// SD File Read Until Char (Advanced with variable name)
+Blockly.Blocks['xiaobai_sd_readuntil_char_adv'] = {
+    init: function () {
+        this.appendValueInput("VAR_NAME")
+            .setCheck("String")
+            .appendField(Blockly.Msg.XIAOBAI_SD_READUNTIL_CHAR_ADV);
+        this.appendValueInput("CHAR")
+            .setCheck("String")
+            .appendField(Blockly.Msg.XIAOBAI_SD_READUNTIL_CHAR);
+        this.setOutput(true, "String");
+        this.setColour(Blockly.Msg.XIAOBAI_HUE);
+        this.setTooltip(Blockly.Msg.XIAOBAI_SD_READUNTIL_CHAR_ADV_TOOLTIP);
         this.setHelpUrl('');
     }
 };
