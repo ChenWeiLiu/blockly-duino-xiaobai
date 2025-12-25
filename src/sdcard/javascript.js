@@ -13,11 +13,11 @@ Blockly.Arduino['xiaobai_sd_init'] = function (block) {
 
     // Initialize SD card in setup
     Blockly.Arduino.setups_['setup_sd'] =
-        'sdCardReady = SD.begin(' + cs_pin + ');\\n' +
-        'if (!sdCardReady) {\\n' +
-        '  Serial.println(\"SD Card initialization failed!\");\\n' +
-        '} else {\\n' +
-        '  Serial.println(\"SD Card initialized.\");\\n' +
+        'sdCardReady = SD.begin(' + cs_pin + ');\n' +
+        'if (!sdCardReady) {\n' +
+        '  Serial.println("SD Card initialization failed!");\n' +
+        '} else {\n' +
+        '  Serial.println("SD Card initialized.");\n' +
         '}';
 
     return '';
@@ -112,11 +112,11 @@ Blockly.Arduino['xiaobai_sd_init_custom'] = function (block) {
         'SPI.begin(' + sck_pin + ', ' + miso_pin + ', ' + mosi_pin + ');';
 
     Blockly.Arduino.setups_['setup_sd'] =
-        'sdCardReady = SD.begin(' + cs_pin + ', SPI);\\n' +
-        'if (!sdCardReady) {\\n' +
-        '  Serial.println("SD Card initialization failed!");\\n' +
-        '} else {\\n' +
-        '  Serial.println("SD Card initialized with custom SPI pins.");\\n' +
+        'sdCardReady = SD.begin(' + cs_pin + ', SPI);\n' +
+        'if (!sdCardReady) {\n' +
+        '  Serial.println("SD Card initialization failed!");\n' +
+        '} else {\n' +
+        '  Serial.println("SD Card initialized with custom SPI pins.");\n' +
         '}';
 
     return '';
