@@ -70,6 +70,109 @@ Blockly.Arduino['xiaobai_sd_remove'] = function (block) {
 
 Blockly.Arduino['xiaobai_sd_mkdir'] = function (block) {
     var dirname = Blockly.Arduino.valueToCode(block, 'DIRNAME', Blockly.Arduino.ORDER_ATOMIC) || '""';
-    var code = 'SD.mkdir(' + dirname + ');\n';
+    var code = 'SD.mkdir(' + dirname + ');\\n';
+    return code;
+};
+
+// ============ 進階功能程式碼生成 ============
+
+Blockly.Arduino['xiaobai_sd_init_custom'] = function (block) {
+    var cs_pin = Blockly.Arduino.valueToCode(block, 'CS_PIN', Blockly.Arduino.ORDER_ATOMIC) || '5';
+    var mosi_pin = Blockly.Arduino.valueToCode(block, 'MOSI_PIN', Blockly.Arduino.ORDER_ATOMIC) || '23';
+    var miso_pin = Blockly.Arduino.valueToCode(block, 'MISO_PIN', Blockly.Arduino.ORDER_ATOMIC) || '19';
+    var sck_pin = Blockly.Arduino.valueToCode(block, 'SCK_PIN', Blockly.Arduino.ORDER_ATOMIC) || '18';
+
+    // Add SD library include
+    Blockly.Arduino.definitions_['include_sd'] = '#include <SD.h>';
+    Blockly.Arduino.definitions_['include_spi'] = '#include <SPI.h>';
+
+    // Global file object
+    Blockly.Arduino.definitions_['define_sd_file'] = 'File sdFile;';
+
+    // Custom SPI initialization
+    Blockly.Arduino.setups_['setup_sd_spi'] =
+        'SPI.begin(' + sck_pin + ', ' + miso_pin + ', ' + mosi_pin + ');';
+
+    Blockly.Arduino.setups_['setup_sd'] =
+        'if (!SD.begin(' + cs_pin + ', SPI)) {\\n' +
+        '  Serial.println("SD Card initialization failed!");\\n' +
+        '}\\n' +
+        'Serial.println("SD Card initialized with custom SPI pins.");';
+
+    return '';
+};
+
+Blockly.Arduino['xiaobai_sd_file_var'] = function (block) {
+    var var_name = Blockly.Arduino.valueToCode(block, 'VAR_NAME', Blockly.Arduino.ORDER_ATOMIC) || '"sdFile"';
+    var_name = var_name.replace(/"/g, ''); // Remove quotes
+
+    // Define file variable globally
+    if (!Blockly.Arduino.definitions_['define_sd_file_' + var_name]) {
+        Blockly.Arduino.definitions_['define_sd_file_' + var_name] = 'File ' + var_name + ';';
+    }
+
+    return '';
+};
+
+Blockly.Arduino['xiaobai_sd_open_adv'] = function (block) {
+    var var_name = Blockly.Arduino.valueToCode(block, 'VAR_NAME', Blockly.Arduino.ORDER_ATOMIC) || '"sdFile"';
+    var_name = var_name.replace(/"/g, '');
+    var filename = Blockly.Arduino.valueToCode(block, 'FILENAME', Blockly.Arduino.ORDER_ATOMIC) || '""';
+    var mode = block.getFieldValue('MODE');
+
+    // Ensure the variable is defined
+    if (!Blockly.Arduino.definitions_['define_sd_file_' + var_name]) {
+        Blockly.Arduino.definitions_['define_sd_file_' + var_name] = 'File ' + var_name + ';';
+    }
+
+    var code = var_name + ' = SD.open(' + filename + ', ' + mode + ');\\n';
+    return code;
+};
+
+Blockly.Arduino['xiaobai_sd_close_adv'] = function (block) {
+    var var_name = Blockly.Arduino.valueToCode(block, 'VAR_NAME', Blockly.Arduino.ORDER_ATOMIC) || '"sdFile"';
+    var_name = var_name.replace(/"/g, '');
+
+    var code = 'if (' + var_name + ') {\\n  ' + var_name + '.close();\\n}\\n';
+    return code;
+};
+
+Blockly.Arduino['xiaobai_sd_write_adv'] = function (block) {
+    var var_name = Blockly.Arduino.valueToCode(block, 'VAR_NAME', Blockly.Arduino.ORDER_ATOMIC) || '"sdFile"';
+    var_name = var_name.replace(/"/g, '');
+    var data = Blockly.Arduino.valueToCode(block, 'DATA', Blockly.Arduino.ORDER_ATOMIC) || '""';
+
+    var code = 'if (' + var_name + ') {\\n  ' + var_name + '.print(' + data + ');\\n}\\n';
+    return code;
+};
+
+Blockly.Arduino['xiaobai_sd_writeln_adv'] = function (block) {
+    var var_name = Blockly.Arduino.valueToCode(block, 'VAR_NAME', Blockly.Arduino.ORDER_ATOMIC) || '"sdFile"';
+    var_name = var_name.replace(/"/g, '');
+    var data = Blockly.Arduino.valueToCode(block, 'DATA', Blockly.Arduino.ORDER_ATOMIC) || '""';
+
+    var code = 'if (' + var_name + ') {\\n  ' + var_name + '.println(' + data + ');\\n}\\n';
+    return code;
+};
+
+Blockly.Arduino['xiaobai_sd_readln_adv'] = function (block) {
+    var var_name = Blockly.Arduino.valueToCode(block, 'VAR_NAME', Blockly.Arduino.ORDER_ATOMIC) || '"sdFile"';
+    var_name = var_name.replace(/"/g, '');
+
+    var code = var_name + '.readStringUntil(\'\\n\')';
+    return [code, Blockly.Arduino.ORDER_ATOMIC];
+};
+
+Blockly.Arduino['xiaobai_sd_available_adv'] = function (block) {
+    var var_name = Blockly.Arduino.valueToCode(block, 'VAR_NAME', Blockly.Arduino.ORDER_ATOMIC) || '"sdFile"';
+    var_name = var_name.replace(/"/g, '');
+
+    var code = '(' + var_name + ' && ' + var_name + '.available())';
+    return [code, Blockly.Arduino.ORDER_ATOMIC];
+};
+
+Blockly.Arduino['xiaobai_sd_rmdir'] = function (block) {
+    var dirname = Blockly.Arduino.valueToCode(block, 'DIRNAME', Blockly.Arduino.ORDER_ATOMIC) || '""';
+    var code = 'SD.rmdir(' + dirname + ');\\n';
     return code;
 };

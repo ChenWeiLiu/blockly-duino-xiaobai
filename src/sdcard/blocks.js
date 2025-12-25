@@ -161,3 +161,159 @@ Blockly.Blocks['xiaobai_sd_mkdir'] = {
         this.setHelpUrl('');
     }
 };
+
+// ============ 進階功能 ============
+
+// SD Card Initialize with Custom SPI Pins
+Blockly.Blocks['xiaobai_sd_init_custom'] = {
+    init: function () {
+        this.appendDummyInput()
+            .appendField(Blockly.Msg.XIAOBAI_SD_INIT_CUSTOM);
+        this.appendValueInput("CS_PIN")
+            .setCheck("Number")
+            .appendField(Blockly.Msg.XIAOBAI_SD_CS_PIN);
+        this.appendValueInput("MOSI_PIN")
+            .setCheck("Number")
+            .appendField("MOSI");
+        this.appendValueInput("MISO_PIN")
+            .setCheck("Number")
+            .appendField("MISO");
+        this.appendValueInput("SCK_PIN")
+            .setCheck("Number")
+            .appendField("SCK");
+        this.setInputsInline(false);
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
+        this.setColour(Blockly.Msg.XIAOBAI_HUE);
+        this.setTooltip(Blockly.Msg.XIAOBAI_SD_INIT_CUSTOM_TOOLTIP);
+        this.setHelpUrl('');
+    }
+};
+
+// SD File Variable Declaration
+Blockly.Blocks['xiaobai_sd_file_var'] = {
+    init: function () {
+        this.appendValueInput("VAR_NAME")
+            .setCheck("String")
+            .appendField(Blockly.Msg.XIAOBAI_SD_FILE_VAR);
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
+        this.setColour(Blockly.Msg.XIAOBAI_HUE);
+        this.setTooltip(Blockly.Msg.XIAOBAI_SD_FILE_VAR_TOOLTIP);
+        this.setHelpUrl('');
+    }
+};
+
+// SD File Open (Advanced with variable name)
+Blockly.Blocks['xiaobai_sd_open_adv'] = {
+    init: function () {
+        this.appendValueInput("VAR_NAME")
+            .setCheck("String")
+            .appendField(Blockly.Msg.XIAOBAI_SD_OPEN_ADV);
+        this.appendValueInput("FILENAME")
+            .setCheck("String")
+            .appendField(Blockly.Msg.XIAOBAI_SD_OPEN);
+        this.appendDummyInput()
+            .appendField(Blockly.Msg.XIAOBAI_SD_MODE)
+            .appendField(new Blockly.FieldDropdown([
+                [Blockly.Msg.XIAOBAI_SD_MODE_READ, "FILE_READ"],
+                [Blockly.Msg.XIAOBAI_SD_MODE_WRITE, "FILE_WRITE"],
+                [Blockly.Msg.XIAOBAI_SD_MODE_APPEND, "FILE_APPEND"]
+            ]), "MODE");
+        this.setInputsInline(false);
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
+        this.setColour(Blockly.Msg.XIAOBAI_HUE);
+        this.setTooltip(Blockly.Msg.XIAOBAI_SD_OPEN_ADV_TOOLTIP);
+        this.setHelpUrl('');
+    }
+};
+
+// SD File Close (Advanced with variable name)
+Blockly.Blocks['xiaobai_sd_close_adv'] = {
+    init: function () {
+        this.appendValueInput("VAR_NAME")
+            .setCheck("String")
+            .appendField(Blockly.Msg.XIAOBAI_SD_CLOSE_ADV);
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
+        this.setColour(Blockly.Msg.XIAOBAI_HUE);
+        this.setTooltip(Blockly.Msg.XIAOBAI_SD_CLOSE_ADV_TOOLTIP);
+        this.setHelpUrl('');
+    }
+};
+
+// SD File Write (Advanced with variable name)
+Blockly.Blocks['xiaobai_sd_write_adv'] = {
+    init: function () {
+        this.appendValueInput("VAR_NAME")
+            .setCheck("String")
+            .appendField(Blockly.Msg.XIAOBAI_SD_WRITE_ADV);
+        this.appendValueInput("DATA")
+            .setCheck(null)
+            .appendField(Blockly.Msg.XIAOBAI_SD_WRITE);
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
+        this.setColour(Blockly.Msg.XIAOBAI_HUE);
+        this.setTooltip(Blockly.Msg.XIAOBAI_SD_WRITE_ADV_TOOLTIP);
+        this.setHelpUrl('');
+    }
+};
+
+// SD File WriteLine (Advanced with variable name)
+Blockly.Blocks['xiaobai_sd_writeln_adv'] = {
+    init: function () {
+        this.appendValueInput("VAR_NAME")
+            .setCheck("String")
+            .appendField(Blockly.Msg.XIAOBAI_SD_WRITELN_ADV);
+        this.appendValueInput("DATA")
+            .setCheck(null)
+            .appendField(Blockly.Msg.XIAOBAI_SD_WRITE);
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
+        this.setColour(Blockly.Msg.XIAOBAI_HUE);
+        this.setTooltip(Blockly.Msg.XIAOBAI_SD_WRITELN_ADV_TOOLTIP);
+        this.setHelpUrl('');
+    }
+};
+
+// SD File ReadLine (Advanced with variable name)
+Blockly.Blocks['xiaobai_sd_readln_adv'] = {
+    init: function () {
+        this.appendValueInput("VAR_NAME")
+            .setCheck("String")
+            .appendField(Blockly.Msg.XIAOBAI_SD_READLN_ADV);
+        this.setOutput(true, "String");
+        this.setColour(Blockly.Msg.XIAOBAI_HUE);
+        this.setTooltip(Blockly.Msg.XIAOBAI_SD_READLN_ADV_TOOLTIP);
+        this.setHelpUrl('');
+    }
+};
+
+// SD File Available (Advanced with variable name)
+Blockly.Blocks['xiaobai_sd_available_adv'] = {
+    init: function () {
+        this.appendValueInput("VAR_NAME")
+            .setCheck("String")
+            .appendField(Blockly.Msg.XIAOBAI_SD_AVAILABLE_ADV);
+        this.setOutput(true, "Boolean");
+        this.setColour(Blockly.Msg.XIAOBAI_HUE);
+        this.setTooltip(Blockly.Msg.XIAOBAI_SD_AVAILABLE_ADV_TOOLTIP);
+        this.setHelpUrl('');
+    }
+};
+
+// SD Remove Directory
+Blockly.Blocks['xiaobai_sd_rmdir'] = {
+    init: function () {
+        this.appendValueInput("DIRNAME")
+            .setCheck("String")
+            .appendField(Blockly.Msg.XIAOBAI_SD_RMDIR);
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
+        this.setColour(Blockly.Msg.XIAOBAI_HUE);
+        this.setTooltip(Blockly.Msg.XIAOBAI_SD_RMDIR_TOOLTIP);
+        this.setHelpUrl('');
+    }
+};
+

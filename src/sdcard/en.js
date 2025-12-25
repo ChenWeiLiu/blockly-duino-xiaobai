@@ -37,3 +37,31 @@ Blockly.Msg["XIAOBAI_SD_REMOVE_TOOLTIP"] = "Delete a file from SD card";
 
 Blockly.Msg["XIAOBAI_SD_MKDIR"] = "SD create directory";
 Blockly.Msg["XIAOBAI_SD_MKDIR_TOOLTIP"] = "Create a new directory on SD card";
+
+// Advanced Features
+Blockly.Msg["XIAOBAI_SD_INIT_CUSTOM"] = "SD Card initialize with custom SPI pins";
+Blockly.Msg["XIAOBAI_SD_INIT_CUSTOM_TOOLTIP"] = "Initialize SD Card with custom SPI pins (CS, MOSI, MISO, SCK)";
+
+Blockly.Msg["XIAOBAI_SD_FILE_VAR"] = "SD declare file variable";
+Blockly.Msg["XIAOBAI_SD_FILE_VAR_TOOLTIP"] = "Declare a file variable for advanced multi-file operations";
+
+Blockly.Msg["XIAOBAI_SD_OPEN_ADV"] = "SD file variable";
+Blockly.Msg["XIAOBAI_SD_OPEN_ADV_TOOLTIP"] = "Open a file with specified variable name";
+
+Blockly.Msg["XIAOBAI_SD_CLOSE_ADV"] = "SD close file variable";
+Blockly.Msg["XIAOBAI_SD_CLOSE_ADV_TOOLTIP"] = "Close the specified file variable";
+
+Blockly.Msg["XIAOBAI_SD_WRITE_ADV"] = "SD file variable";
+Blockly.Msg["XIAOBAI_SD_WRITE_ADV_TOOLTIP"] = "Write data to the specified file variable";
+
+Blockly.Msg["XIAOBAI_SD_WRITELN_ADV"] = "SD file variable";
+Blockly.Msg["XIAOBAI_SD_WRITELN_ADV_TOOLTIP"] = "Write line to the specified file variable";
+
+Blockly.Msg["XIAOBAI_SD_READLN_ADV"] = "SD file variable read line";
+Blockly.Msg["XIAOBAI_SD_READLN_ADV_TOOLTIP"] = "Read one line from the specified file variable";
+
+Blockly.Msg["XIAOBAI_SD_AVAILABLE_ADV"] = "SD file variable has data";
+Blockly.Msg["XIAOBAI_SD_AVAILABLE_ADV_TOOLTIP"] = "Check if the specified file variable has data available";
+
+Blockly.Msg["XIAOBAI_SD_RMDIR"] = "SD remove directory";
+Blockly.Msg["XIAOBAI_SD_RMDIR_TOOLTIP"] = "Remove an empty directory from SD card";

@@ -262,6 +262,121 @@
                 </shadow>
             </value>
         </block>
+        
+        <sep gap="16"></sep>
+        <label text="進階功能 Advanced"></label>
+        
+        <!-- SD Card 自訂 SPI 腳位初始化 -->
+        <block type="xiaobai_sd_init_custom">
+            <value name="CS_PIN">
+                <shadow type="math_number">
+                    <field name="NUM">5</field>
+                </shadow>
+            </value>
+            <value name="MOSI_PIN">
+                <shadow type="math_number">
+                    <field name="NUM">23</field>
+                </shadow>
+            </value>
+            <value name="MISO_PIN">
+                <shadow type="math_number">
+                    <field name="NUM">19</field>
+                </shadow>
+            </value>
+            <value name="SCK_PIN">
+                <shadow type="math_number">
+                    <field name="NUM">18</field>
+                </shadow>
+            </value>
+        </block>
+        
+        <!-- SD 宣告檔案變數 -->
+        <block type="xiaobai_sd_file_var">
+            <value name="VAR_NAME">
+                <shadow type="text">
+                    <field name="TEXT">myFile</field>
+                </shadow>
+            </value>
+        </block>
+        
+        <!-- SD 檔案變數開啟 -->
+        <block type="xiaobai_sd_open_adv">
+            <field name="MODE">FILE_WRITE</field>
+            <value name="VAR_NAME">
+                <shadow type="text">
+                    <field name="TEXT">myFile</field>
+                </shadow>
+            </value>
+            <value name="FILENAME">
+                <shadow type="text">
+                    <field name="TEXT">data.txt</field>
+                </shadow>
+            </value>
+        </block>
+        
+        <!-- SD 檔案變數關閉 -->
+        <block type="xiaobai_sd_close_adv">
+            <value name="VAR_NAME">
+                <shadow type="text">
+                    <field name="TEXT">myFile</field>
+                </shadow>
+            </value>
+        </block>
+        
+        <!-- SD 檔案變數寫入 -->
+        <block type="xiaobai_sd_write_adv">
+            <value name="VAR_NAME">
+                <shadow type="text">
+                    <field name="TEXT">myFile</field>
+                </shadow>
+            </value>
+            <value name="DATA">
+                <shadow type="text">
+                    <field name="TEXT">Hello</field>
+                </shadow>
+            </value>
+        </block>
+        
+        <!-- SD 檔案變數寫入一行 -->
+        <block type="xiaobai_sd_writeln_adv">
+            <value name="VAR_NAME">
+                <shadow type="text">
+                    <field name="TEXT">myFile</field>
+                </shadow>
+            </value>
+            <value name="DATA">
+                <shadow type="text">
+                    <field name="TEXT">Hello</field>
+                </shadow>
+            </value>
+        </block>
+        
+        <!-- SD 檔案變數讀取一行 -->
+        <block type="xiaobai_sd_readln_adv">
+            <value name="VAR_NAME">
+                <shadow type="text">
+                    <field name="TEXT">myFile</field>
+                </shadow>
+            </value>
+        </block>
+        
+        <!-- SD 檔案變數有資料 -->
+        <block type="xiaobai_sd_available_adv">
+            <value name="VAR_NAME">
+                <shadow type="text">
+                    <field name="TEXT">myFile</field>
+                </shadow>
+            </value>
+        </block>
+        
+        <!-- SD 刪除目錄 -->
+        <block type="xiaobai_sd_rmdir">
+            <value name="DIRNAME">
+                <shadow type="text">
+                    <field name="TEXT">old_logs</field>
+                </shadow>
+            </value>
+        </block>
     </category>
 
 </category>

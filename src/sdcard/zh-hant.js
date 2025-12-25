@@ -37,3 +37,31 @@ Blockly.Msg["XIAOBAI_SD_REMOVE_TOOLTIP"] = "從 SD 卡刪除指定檔案";
 
 Blockly.Msg["XIAOBAI_SD_MKDIR"] = "SD 卡建立目錄";
 Blockly.Msg["XIAOBAI_SD_MKDIR_TOOLTIP"] = "在 SD 卡上建立新目錄";
+
+// 進階功能
+Blockly.Msg["XIAOBAI_SD_INIT_CUSTOM"] = "SD 卡使用自訂 SPI 腳位初始化";
+Blockly.Msg["XIAOBAI_SD_INIT_CUSTOM_TOOLTIP"] = "使用自訂 SPI 腳位 (CS, MOSI, MISO, SCK) 初始化 SD 記憶卡";
+
+Blockly.Msg["XIAOBAI_SD_FILE_VAR"] = "SD 卡宣告檔案變數";
+Blockly.Msg["XIAOBAI_SD_FILE_VAR_TOOLTIP"] = "宣告一個檔案變數，用於進階多檔案操作";
+
+Blockly.Msg["XIAOBAI_SD_OPEN_ADV"] = "SD 卡檔案變數";
+Blockly.Msg["XIAOBAI_SD_OPEN_ADV_TOOLTIP"] = "使用指定變數名稱開啟檔案";
+
+Blockly.Msg["XIAOBAI_SD_CLOSE_ADV"] = "SD 卡關閉檔案變數";
+Blockly.Msg["XIAOBAI_SD_CLOSE_ADV_TOOLTIP"] = "關閉指定的檔案變數";
+
+Blockly.Msg["XIAOBAI_SD_WRITE_ADV"] = "SD 卡檔案變數";
+Blockly.Msg["XIAOBAI_SD_WRITE_ADV_TOOLTIP"] = "寫入資料到指定的檔案變數";
+
+Blockly.Msg["XIAOBAI_SD_WRITELN_ADV"] = "SD 卡檔案變數";
+Blockly.Msg["XIAOBAI_SD_WRITELN_ADV_TOOLTIP"] = "寫入一行到指定的檔案變數";
+
+Blockly.Msg["XIAOBAI_SD_READLN_ADV"] = "SD 卡檔案變數讀取一行";
+Blockly.Msg["XIAOBAI_SD_READLN_ADV_TOOLTIP"] = "從指定檔案變數讀取一行";
+
+Blockly.Msg["XIAOBAI_SD_AVAILABLE_ADV"] = "SD 卡檔案變數有資料";
+Blockly.Msg["XIAOBAI_SD_AVAILABLE_ADV_TOOLTIP"] = "檢查指定檔案變數是否還有資料可讀取";
+
+Blockly.Msg["XIAOBAI_SD_RMDIR"] = "SD 卡刪除目錄";
+Blockly.Msg["XIAOBAI_SD_RMDIR_TOOLTIP"] = "從 SD 卡刪除空目錄";
