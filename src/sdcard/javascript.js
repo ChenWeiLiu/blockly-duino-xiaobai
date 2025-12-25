@@ -6,8 +6,9 @@ Blockly.Arduino['xiaobai_sd_init'] = function (block) {
     // Add SdFat library include
     Blockly.Arduino.definitions_['include_sdfat'] = '#include "SdFat.h"';
 
-    // Global SdFat object and status
-    Blockly.Arduino.definitions_['define_sdfat_object'] = 'SdFat SD;\nbool sdCardReady = false;';
+    // Global SdFat object
+    Blockly.Arduino.definitions_['define_sdfat_object'] = 'SdFat SD;';
+    Blockly.Arduino.definitions_['define_sd_ready'] = 'bool sdCardReady = false;';
 
     // Initialize SD card in setup
     Blockly.Arduino.setups_['setup_sd'] =
@@ -148,8 +149,13 @@ Blockly.Arduino['xiaobai_sd_init_custom'] = function (block) {
     Blockly.Arduino.definitions_['include_sdfat'] = '#include "SdFat.h"';
     Blockly.Arduino.definitions_['include_spi'] = '#include <SPI.h>';
 
-    // Global SdFat object and status
-    Blockly.Arduino.definitions_['define_sdfat_object'] = 'SdFat SD;\nbool sdCardReady = false;';
+    // Global SdFat object
+    Blockly.Arduino.definitions_['define_sdfat_object'] = 'SdFat SD;';
+
+    // Global status variable (only if not already defined)
+    if (!Blockly.Arduino.definitions_['define_sd_ready']) {
+        Blockly.Arduino.definitions_['define_sd_ready'] = 'bool sdCardReady = false;';
+    }
 
     // Custom SPI initialization
     Blockly.Arduino.setups_['setup_sd_spi'] =
