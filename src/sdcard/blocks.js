@@ -81,6 +81,18 @@ Blockly.Blocks['xiaobai_sd_close'] = {
     }
 };
 
+// SD Card File Is Open Check
+Blockly.Blocks['xiaobai_sd_is_open'] = {
+    init: function () {
+        this.appendDummyInput()
+            .appendField(Blockly.Msg.XIAOBAI_SD_IS_OPEN);
+        this.setOutput(true, "Boolean");
+        this.setColour(Blockly.Msg.XIAOBAI_HUE);
+        this.setTooltip(Blockly.Msg.XIAOBAI_SD_IS_OPEN_TOOLTIP);
+        this.setHelpUrl('');
+    }
+};
+
 // SD Card Write Data Block
 Blockly.Blocks['xiaobai_sd_write'] = {
     init: function () {

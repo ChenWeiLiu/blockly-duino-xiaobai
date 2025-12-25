@@ -215,6 +215,12 @@
         <!-- SD Card 關閉檔案 -->
         <block type="xiaobai_sd_close"></block>
         
+        <!-- SD Card 檔案是否開啟 -->
+        <block type="xiaobai_sd_is_open"></block>
+        
+        <!-- SD Card 檔案是否開啟 -->
+        <block type="xiaobai_sd_is_open"></block>
+        
         <!-- SD Card 寫入資料 -->
         <block type="xiaobai_sd_write">
             <value name="DATA">

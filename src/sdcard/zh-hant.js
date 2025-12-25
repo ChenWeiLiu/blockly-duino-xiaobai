@@ -20,6 +20,9 @@ Blockly.Msg["XIAOBAI_SD_OPEN_TOOLTIP"] = "以指定模式開啟 SD 卡上的檔�
 Blockly.Msg["XIAOBAI_SD_CLOSE"] = "SD 卡關閉檔案";
 Blockly.Msg["XIAOBAI_SD_CLOSE_TOOLTIP"] = "關閉目前開啟的檔案";
 
+Blockly.Msg["XIAOBAI_SD_IS_OPEN"] = "SD 卡檔案是否開啟";
+Blockly.Msg["XIAOBAI_SD_IS_OPEN_TOOLTIP"] = "檢查檔案是否正在開啟中";
+
 Blockly.Msg["XIAOBAI_SD_WRITE"] = "SD 卡寫入資料到檔案";
 Blockly.Msg["XIAOBAI_SD_WRITE_TOOLTIP"] = "將資料寫入開啟的檔案（不換行）";
 

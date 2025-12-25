@@ -20,6 +20,9 @@ Blockly.Msg["XIAOBAI_SD_OPEN_TOOLTIP"] = "Open a file on SD card with specified 
 Blockly.Msg["XIAOBAI_SD_CLOSE"] = "SD close file";
 Blockly.Msg["XIAOBAI_SD_CLOSE_TOOLTIP"] = "Close the current open file";
 
+Blockly.Msg["XIAOBAI_SD_IS_OPEN"] = "SD file is open";
+Blockly.Msg["XIAOBAI_SD_IS_OPEN_TOOLTIP"] = "Check if the file is currently open";
+
 Blockly.Msg["XIAOBAI_SD_WRITE"] = "SD write to file";
 Blockly.Msg["XIAOBAI_SD_WRITE_TOOLTIP"] = "Write data to the open file (no newline)";
 

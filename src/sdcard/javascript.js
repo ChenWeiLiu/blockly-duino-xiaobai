@@ -46,6 +46,11 @@ Blockly.Arduino['xiaobai_sd_close'] = function (block) {
     return code;
 };
 
+Blockly.Arduino['xiaobai_sd_is_open'] = function (block) {
+    var code = 'sdFile';
+    return [code, Blockly.Arduino.ORDER_ATOMIC];
+};
+
 Blockly.Arduino['xiaobai_sd_write'] = function (block) {
     var data = Blockly.Arduino.valueToCode(block, 'DATA', Blockly.Arduino.ORDER_ATOMIC) || '""';
     var code = 'if (sdFile) {\n  sdFile.print(' + data + ');\n}\n';
