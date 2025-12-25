@@ -7,6 +7,9 @@ Blockly.Msg["XIAOBAI_SD_INIT"] = "SD Card";
 Blockly.Msg["XIAOBAI_SD_CS_PIN"] = "initialize CS pin";
 Blockly.Msg["XIAOBAI_SD_INIT_TOOLTIP"] = "Initialize SD Card with specified CS (Chip Select) pin";
 
+Blockly.Msg["XIAOBAI_SD_IS_READY"] = "SD Card is initialized";
+Blockly.Msg["XIAOBAI_SD_IS_READY_TOOLTIP"] = "Check if SD Card initialized successfully";
+
 Blockly.Msg["XIAOBAI_SD_OPEN"] = "SD open file";
 Blockly.Msg["XIAOBAI_SD_MODE"] = "mode";
 Blockly.Msg["XIAOBAI_SD_MODE_READ"] = "Read";

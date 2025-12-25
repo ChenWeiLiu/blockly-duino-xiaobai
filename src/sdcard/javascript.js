@@ -7,18 +7,30 @@ Blockly.Arduino['xiaobai_sd_init'] = function (block) {
     Blockly.Arduino.definitions_['include_sd'] = '#include <SD.h>';
     Blockly.Arduino.definitions_['include_spi'] = '#include <SPI.h>';
 
-    // Global file object
+    // Global file object and status
     Blockly.Arduino.definitions_['define_sd_file'] = 'File sdFile;';
+    Blockly.Arduino.definitions_['define_sd_ready'] = 'bool sdCardReady = false;';
 
     // Initialize SD card in setup
     Blockly.Arduino.setups_['setup_sd'] =
-        'if (!SD.begin(' + cs_pin + ')) {\n' +
-        '  Serial.println("SD Card initialization failed!");\n' +
-        '  return;\n' +
-        '}\n' +
-        'Serial.println("SD Card initialized.");';
+        'sdCardReady = SD.begin(' + cs_pin + ');\\n' +
+        'if (!sdCardReady) {\\n' +
+        '  Serial.println(\"SD Card initialization failed!\");\\n' +
+        '} else {\\n' +
+        '  Serial.println(\"SD Card initialized.\");\\n' +
+        '}';
 
     return '';
+};
+
+Blockly.Arduino['xiaobai_sd_is_ready'] = function (block) {
+    // Ensure the status variable is defined
+    if (!Blockly.Arduino.definitions_['define_sd_ready']) {
+        Blockly.Arduino.definitions_['define_sd_ready'] = 'bool sdCardReady = false;';
+    }
+
+    var code = 'sdCardReady';
+    return [code, Blockly.Arduino.ORDER_ATOMIC];
 };
 
 Blockly.Arduino['xiaobai_sd_open'] = function (block) {
@@ -86,18 +98,21 @@ Blockly.Arduino['xiaobai_sd_init_custom'] = function (block) {
     Blockly.Arduino.definitions_['include_sd'] = '#include <SD.h>';
     Blockly.Arduino.definitions_['include_spi'] = '#include <SPI.h>';
 
-    // Global file object
+    // Global file object and status
     Blockly.Arduino.definitions_['define_sd_file'] = 'File sdFile;';
+    Blockly.Arduino.definitions_['define_sd_ready'] = 'bool sdCardReady = false;';
 
     // Custom SPI initialization
     Blockly.Arduino.setups_['setup_sd_spi'] =
         'SPI.begin(' + sck_pin + ', ' + miso_pin + ', ' + mosi_pin + ');';
 
     Blockly.Arduino.setups_['setup_sd'] =
-        'if (!SD.begin(' + cs_pin + ', SPI)) {\\n' +
+        'sdCardReady = SD.begin(' + cs_pin + ', SPI);\\n' +
+        'if (!sdCardReady) {\\n' +
         '  Serial.println("SD Card initialization failed!");\\n' +
-        '}\\n' +
-        'Serial.println("SD Card initialized with custom SPI pins.");';
+        '} else {\\n' +
+        '  Serial.println("SD Card initialized with custom SPI pins.");\\n' +
+        '}';
 
     return '';
 };

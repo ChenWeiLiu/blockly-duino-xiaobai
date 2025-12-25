@@ -35,6 +35,18 @@ Blockly.Blocks['xiaobai_sd_init'] = {
     }
 };
 
+// SD Card Initialization Status Check
+Blockly.Blocks['xiaobai_sd_is_ready'] = {
+    init: function () {
+        this.appendDummyInput()
+            .appendField(Blockly.Msg.XIAOBAI_SD_IS_READY);
+        this.setOutput(true, "Boolean");
+        this.setColour(Blockly.Msg.XIAOBAI_HUE);
+        this.setTooltip(Blockly.Msg.XIAOBAI_SD_IS_READY_TOOLTIP);
+        this.setHelpUrl('');
+    }
+};
+
 // SD Card File Open Block
 Blockly.Blocks['xiaobai_sd_open'] = {
     init: function () {

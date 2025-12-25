@@ -7,6 +7,9 @@ Blockly.Msg["XIAOBAI_SD_INIT"] = "SD 卡";
 Blockly.Msg["XIAOBAI_SD_CS_PIN"] = "初始化 CS 腳位";
 Blockly.Msg["XIAOBAI_SD_INIT_TOOLTIP"] = "使用指定的 CS (晶片選擇) 腳位初始化 SD 記憶卡";
 
+Blockly.Msg["XIAOBAI_SD_IS_READY"] = "SD 卡是否已初始化";
+Blockly.Msg["XIAOBAI_SD_IS_READY_TOOLTIP"] = "檢查 SD 記憶卡是否初始化成功";
+
 Blockly.Msg["XIAOBAI_SD_OPEN"] = "SD 卡開啟檔案";
 Blockly.Msg["XIAOBAI_SD_MODE"] = "模式";
 Blockly.Msg["XIAOBAI_SD_MODE_READ"] = "讀取";

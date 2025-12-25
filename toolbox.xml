@@ -199,6 +199,9 @@
             <field name="CS_PIN">5</field>
         </block>
         
+        <!-- SD Card 狀態檢查 -->
+        <block type="xiaobai_sd_is_ready"></block>
+        
         <!-- SD Card 開啟檔案 -->
         <block type="xiaobai_sd_open">
             <field name="MODE">FILE_WRITE</field>
