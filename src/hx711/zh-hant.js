@@ -3,10 +3,15 @@ Blockly.Msg["HX711"] = "HX711 稱重模組";
 
 // HX711 積木文字
 Blockly.Msg["HX711_INIT"] = "初始化 HX711 #";
-Blockly.Msg["HX711_INIT_TOOLTIP"] = "初始化 HX711 稱重模組，設定 DOUT 和 SCK 腳位";
+Blockly.Msg["HX711_INIT_TOOLTIP"] = "初始化 HX711 稱重模組，設定 DOUT 和 SCK 腳位，並選擇採樣率";
+Blockly.Msg["HX711_RATE"] = "採樣率";
+Blockly.Msg["HX711_RATE_FAST"] = "快速 (80Hz, ~12ms)";
+Blockly.Msg["HX711_RATE_PRECISE"] = "精確 (10Hz, ~100ms)";
+
 
 Blockly.Msg["HX711_READ"] = "讀取 HX711 #";
-Blockly.Msg["HX711_READ_TOOLTIP"] = "讀取 HX711 稱重模組的重量值（平均10次讀數）";
+Blockly.Msg["HX711_READ_TOOLTIP"] = "讀取 HX711 稱重模組的重量值（平均3次讀數，快速模式）";
+
 
 Blockly.Msg["HX711_TARE"] = "HX711 # 去皮歸零";
 Blockly.Msg["HX711_TARE_TOOLTIP"] = "將當前重量設定為零點（去皮）";

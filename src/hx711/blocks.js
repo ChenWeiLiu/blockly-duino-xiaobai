@@ -8,6 +8,13 @@ Blockly.Blocks["hx711_init"] = {
             .appendField(new Blockly.FieldNumber(2, 0, 50), "DOUT")
             .appendField("SCK")
             .appendField(new Blockly.FieldNumber(3, 0, 50), "SCK");
+        this.appendDummyInput()
+            .appendField(Blockly.Msg["HX711_RATE"])
+            .appendField(new Blockly.FieldDropdown([
+                [Blockly.Msg["HX711_RATE_FAST"], "80"],
+                [Blockly.Msg["HX711_RATE_PRECISE"], "10"]
+            ]), "RATE");
+        this.setInputsInline(true);
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
         this.setColour(Blockly.Msg["XIAOBAI_HUE"]);

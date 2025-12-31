@@ -3,6 +3,7 @@ Blockly.Arduino['hx711_init'] = function (block) {
     var num = block.getFieldValue('NUM');
     var dout = block.getFieldValue('DOUT');
     var sck = block.getFieldValue('SCK');
+    var rate = block.getFieldValue('RATE') || '10';  // 預設 10Hz
 
     Blockly.Arduino.definitions_['include_hx711'] = '#include <HX711.h>';
     Blockly.Arduino.definitions_['define_hx711_' + num] =
@@ -10,19 +11,27 @@ Blockly.Arduino['hx711_init'] = function (block) {
         'const int LOADCELL_DOUT_PIN_' + num + ' = ' + dout + ';\n' +
         'const int LOADCELL_SCK_PIN_' + num + ' = ' + sck + ';';
 
-    Blockly.Arduino.setups_['setup_hx711_' + num] =
-        'scale_' + num + '.begin(LOADCELL_DOUT_PIN_' + num + ', LOADCELL_SCK_PIN_' + num + ');\n' +
-        '  scale_' + num + '.set_scale();\n' +
-        '  scale_' + num + '.tare();';
+    var setupCode = 'scale_' + num + '.begin(LOADCELL_DOUT_PIN_' + num + ', LOADCELL_SCK_PIN_' + num + ');\n';
 
-    var code = '// HX711 #' + num + ' 已初始化\n';
+    // 設定採樣率
+    if (rate === '80') {
+        setupCode += '  scale_' + num + '.set_gain(128);\n';  // 80Hz 模式
+        setupCode += '  // 注意：80Hz 模式需要 HX711 的 RATE 引腳接高電位\n';
+    }
+
+    setupCode += '  scale_' + num + '.set_scale();\n';
+    setupCode += '  scale_' + num + '.tare();';
+
+    Blockly.Arduino.setups_['setup_hx711_' + num] = setupCode;
+
+    var code = '// HX711 #' + num + ' 已初始化 (' + rate + 'Hz)\n';
     return code;
 };
 
 // HX711 讀取重量
 Blockly.Arduino['hx711_read'] = function (block) {
     var num = block.getFieldValue('NUM');
-    var code = 'scale_' + num + '.get_units(10)';
+    var code = 'scale_' + num + '.get_units(3)';  // 改為3次平均，加快讀取速度
     return [code, Blockly.Arduino.ORDER_ATOMIC];
 };
 

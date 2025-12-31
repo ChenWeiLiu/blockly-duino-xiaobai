@@ -3,10 +3,15 @@ Blockly.Msg["HX711"] = "HX711 Load Cell";
 
 // HX711 Block Labels
 Blockly.Msg["HX711_INIT"] = "Initialize HX711 #";
-Blockly.Msg["HX711_INIT_TOOLTIP"] = "Initialize HX711 load cell module with DOUT and SCK pins";
+Blockly.Msg["HX711_INIT_TOOLTIP"] = "Initialize HX711 load cell module with DOUT and SCK pins, and select sampling rate";
+Blockly.Msg["HX711_RATE"] = "Sampling Rate";
+Blockly.Msg["HX711_RATE_FAST"] = "Fast (80Hz, ~12ms)";
+Blockly.Msg["HX711_RATE_PRECISE"] = "Precise (10Hz, ~100ms)";
+
 
 Blockly.Msg["HX711_READ"] = "Read HX711 #";
-Blockly.Msg["HX711_READ_TOOLTIP"] = "Read weight from HX711 load cell (average of 10 readings)";
+Blockly.Msg["HX711_READ_TOOLTIP"] = "Read weight from HX711 load cell (average of 3 readings, fast mode)";
+
 
 Blockly.Msg["HX711_TARE"] = "Tare HX711 #";
 Blockly.Msg["HX711_TARE_TOOLTIP"] = "Set current weight as zero point (tare)";
