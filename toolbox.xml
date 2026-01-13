@@ -175,6 +175,69 @@
         </block>
     </category>
     
+    <!-- ========== DRV8825 步進馬達模組 ========== -->
+    <category id="category_drv8825" name="%{BKY_DRV8825}" colour="%{BKY_DRV8825_HUE}">
+        <!-- DRV8825 初始化 -->
+        <block type="drv8825_init">
+            <field name="NUM">1</field>
+            <field name="STEP_PIN">2</field>
+            <field name="DIR_PIN">3</field>
+            <field name="ENABLE_PIN">4</field>
+            <field name="STEPS_PER_REV">24</field>
+        </block>
+        
+        <!-- DRV8825 移動步數 -->
+        <block type="drv8825_move_steps">
+            <field name="NUM">1</field>
+            <value name="STEPS">
+                <shadow type="math_number">
+                    <field name="NUM">24</field>
+                </shadow>
+            </value>
+        </block>
+        
+        <!-- DRV8825 設定轉速 -->
+        <block type="drv8825_set_speed">
+            <field name="NUM">1</field>
+            <value name="SPEED">
+                <shadow type="math_number">
+                    <field name="NUM">60</field>
+                </shadow>
+            </value>
+        </block>
+        
+        <!-- DRV8825 連續旋轉 -->
+        <block type="drv8825_run">
+            <field name="NUM">1</field>
+            <field name="DIRECTION">1</field>
+        </block>
+        
+        <!-- DRV8825 停止 -->
+        <block type="drv8825_stop">
+            <field name="NUM">1</field>
+        </block>
+        
+        <!-- DRV8825 啟用 -->
+        <block type="drv8825_enable">
+            <field name="NUM">1</field>
+        </block>
+        
+        <!-- DRV8825 停用 -->
+        <block type="drv8825_disable">
+            <field name="NUM">1</field>
+        </block>
+        
+        <!-- DRV8825 設定加速度 -->
+        <block type="drv8825_set_acceleration">
+            <field name="NUM">1</field>
+            <value name="ACCEL">
+                <shadow type="math_number">
+                    <field name="NUM">500</field>
+                </shadow>
+            </value>
+        </block>
+    </category>
+    
     <!-- ========== DS18B20 溫度感測器模組 ========== -->
     <category id="category_ds18b20" name="%{BKY_DS18B20}" colour="%{BKY_XIAOBAI_HUE}">
         <!-- DS18B20 初始化 -->
