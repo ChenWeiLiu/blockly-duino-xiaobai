@@ -23,8 +23,7 @@
         basePath + 'src/serial/blocks.js',
         basePath + 'src/esp32/blocks.js',
         basePath + 'src/ds18b20/blocks.js',
-        basePath + 'src/sdcard/blocks.js',
-        basePath + 'src/drv8825/blocks.js'
+        basePath + 'src/sdcard/blocks.js'
     ];
 
     for (var i = 0; i < scripts.length; i++) {
