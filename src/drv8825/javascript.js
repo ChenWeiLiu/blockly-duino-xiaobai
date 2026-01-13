@@ -15,7 +15,9 @@ Blockly.Arduino['drv8825_init'] = function (block) {
         'AccelStepper stepper_' + num + '(AccelStepper::DRIVER, STEP_PIN_' + num + ', DIR_PIN_' + num + ');';
 
     var setupCode =
-        'pinMode(ENABLE_PIN_' + num + ', OUTPUT);\n' +
+        'pinMode(STEP_PIN_' + num + ', OUTPUT);\n' +
+        '  pinMode(DIR_PIN_' + num + ', OUTPUT);\n' +
+        '  pinMode(ENABLE_PIN_' + num + ', OUTPUT);\n' +
         '  digitalWrite(ENABLE_PIN_' + num + ', HIGH);  // 預設停用馬達\n' +
         '  stepper_' + num + '.setMaxSpeed(1000);  // 設定最大速度 (步/秒)\n' +
         '  stepper_' + num + '.setAcceleration(500);  // 設定加速度 (步/秒²)';
@@ -29,10 +31,11 @@ Blockly.Arduino['drv8825_init'] = function (block) {
 // DRV8825 移動步數
 Blockly.Arduino['drv8825_move_steps'] = function (block) {
     var num = block.getFieldValue('NUM');
+    var direction = block.getFieldValue('DIRECTION');
     var steps = Blockly.Arduino.valueToCode(block, 'STEPS',
         Blockly.Arduino.ORDER_ATOMIC) || '0';
 
-    var code = 'stepper_' + num + '.move(' + steps + ');\n';
+    var code = 'stepper_' + num + '.move(' + direction + ' * ' + steps + ');\n';
     code += 'while (stepper_' + num + '.distanceToGo() != 0) {\n';
     code += '  stepper_' + num + '.run();\n';
     code += '}\n';

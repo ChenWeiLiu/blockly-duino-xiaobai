@@ -27,14 +27,18 @@ Blockly.Blocks["drv8825_move_steps"] = {
     init: function () {
         this.appendDummyInput()
             .appendField(Blockly.Msg["DRV8825_MOVE_STEPS"])
-            .appendField(new Blockly.FieldDropdown([["1", "1"], ["2", "2"], ["3", "3"]]), "NUM");
+            .appendField(new Blockly.FieldDropdown([["1", "1"], ["2", "2"], ["3", "3"]]), "NUM")
+            .appendField(new Blockly.FieldDropdown([
+                [Blockly.Msg["DRV8825_CLOCKWISE"], "1"],
+                [Blockly.Msg["DRV8825_COUNTERCLOCKWISE"], "-1"]
+            ]), "DIRECTION");
         this.appendValueInput("STEPS")
             .setCheck("Number")
             .appendField(Blockly.Msg["DRV8825_STEPS"]);
         this.setInputsInline(true);
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
-        this.setColour(Blockly.Msg["DRV8825_HUE"]);
+        this.setColour(Blockly.Msg["XIAOBAI_HUE"]);
         this.setTooltip(Blockly.Msg["DRV8825_MOVE_STEPS_TOOLTIP"]);
         this.setHelpUrl("");
     }
