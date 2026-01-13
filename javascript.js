@@ -29,7 +29,7 @@
 
     for (var i = 0; i < scripts.length; i++) {
         var xhr = new XMLHttpRequest();
-        xhr.open('GET', scripts[i], false);
+        xhr.open('GET', scripts[i] + '?v=1', false);
         xhr.send();
         if (xhr.status === 200) {
             eval(xhr.responseText);

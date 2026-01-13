@@ -29,7 +29,7 @@
 
     for (var i = 0; i < scripts.length; i++) {
         var xhr = new XMLHttpRequest();
-        xhr.open('GET', scripts[i], false); // 同步請求
+        xhr.open('GET', scripts[i] + '?v=1', false); // 強制重新載入
         xhr.send();
         if (xhr.status === 200) {
             eval(xhr.responseText);
