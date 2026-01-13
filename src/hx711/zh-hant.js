@@ -10,7 +10,9 @@ Blockly.Msg["HX711_RATE_PRECISE"] = "精確 (10Hz, ~100ms)";
 
 
 Blockly.Msg["HX711_READ"] = "讀取 HX711 #";
-Blockly.Msg["HX711_READ_TOOLTIP"] = "讀取 HX711 稱重模組的重量值（平均3次讀數，快速模式）";
+Blockly.Msg["HX711_AVG_TIMES"] = "平均";
+Blockly.Msg["HX711_TIMES_UNIT"] = "次";
+Blockly.Msg["HX711_READ_TOOLTIP"] = "讀取 HX711 稱重模組的重量值（可設定平均讀取次數 1-20 次）";
 
 
 Blockly.Msg["HX711_TARE"] = "HX711 # 去皮歸零";

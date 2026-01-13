@@ -31,7 +31,8 @@ Blockly.Arduino['hx711_init'] = function (block) {
 // HX711 讀取重量
 Blockly.Arduino['hx711_read'] = function (block) {
     var num = block.getFieldValue('NUM');
-    var code = 'scale_' + num + '.get_units(3)';  // 改為3次平均，加快讀取速度
+    var avgTimes = block.getFieldValue('AVG_TIMES') || '10';  // 預設 10 次
+    var code = 'scale_' + num + '.get_units(' + avgTimes + ')';
     return [code, Blockly.Arduino.ORDER_ATOMIC];
 };
 

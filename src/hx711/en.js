@@ -10,7 +10,9 @@ Blockly.Msg["HX711_RATE_PRECISE"] = "Precise (10Hz, ~100ms)";
 
 
 Blockly.Msg["HX711_READ"] = "Read HX711 #";
-Blockly.Msg["HX711_READ_TOOLTIP"] = "Read weight from HX711 load cell (average of 3 readings, fast mode)";
+Blockly.Msg["HX711_AVG_TIMES"] = "Average";
+Blockly.Msg["HX711_TIMES_UNIT"] = "times";
+Blockly.Msg["HX711_READ_TOOLTIP"] = "Read weight from HX711 load cell (customizable average readings: 1-20 times)";
 
 
 Blockly.Msg["HX711_TARE"] = "Tare HX711 #";

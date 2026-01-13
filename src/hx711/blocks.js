@@ -29,6 +29,11 @@ Blockly.Blocks["hx711_read"] = {
         this.appendDummyInput()
             .appendField(Blockly.Msg["HX711_READ"])
             .appendField(new Blockly.FieldDropdown([["1", "1"], ["2", "2"], ["3", "3"]]), "NUM");
+        this.appendDummyInput()
+            .appendField(Blockly.Msg["HX711_AVG_TIMES"])
+            .appendField(new Blockly.FieldNumber(10, 1, 20, 1), "AVG_TIMES")  // 預設 10 次
+            .appendField(Blockly.Msg["HX711_TIMES_UNIT"]);
+        this.setInputsInline(true);
         this.setOutput(true, "Number");
         this.setColour(Blockly.Msg["XIAOBAI_HUE"]);
         this.setTooltip(Blockly.Msg["HX711_READ_TOOLTIP"]);
