@@ -144,3 +144,53 @@ Blockly.Blocks["drv8825_set_acceleration"] = {
         this.setHelpUrl("");
     }
 };
+
+// DRV8825 移動到限位器積木
+Blockly.Blocks["drv8825_move_until_limit"] = {
+    init: function () {
+        this.appendDummyInput()
+            .appendField(Blockly.Msg["DRV8825_MOVE_UNTIL_LIMIT"])
+            .appendField(new Blockly.FieldDropdown([["1", "1"], ["2", "2"], ["3", "3"]]), "NUM")
+            .appendField(new Blockly.FieldDropdown([
+                [Blockly.Msg["DRV8825_CLOCKWISE"], "1"],
+                [Blockly.Msg["DRV8825_COUNTERCLOCKWISE"], "-1"]
+            ]), "DIRECTION");
+        this.appendDummyInput()
+            .appendField(Blockly.Msg["DRV8825_LIMIT_PIN"])
+            .appendField(new Blockly.FieldNumber(12, 0, 50), "LIMIT_PIN")
+            .appendField(Blockly.Msg["DRV8825_LIMIT_STATE"])
+            .appendField(new Blockly.FieldDropdown([["HIGH", "HIGH"], ["LOW", "LOW"]]), "TRIGGER_STATE")
+            .appendField(Blockly.Msg["DRV8825_LIMIT_STOP"]);
+        this.setInputsInline(true);
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
+        this.setColour(Blockly.Msg["DRV8825_HUE"]);
+        this.setTooltip(Blockly.Msg["DRV8825_MOVE_UNTIL_LIMIT_TOOLTIP"]);
+        this.setHelpUrl("");
+    }
+};
+
+// DRV8825 連續旋轉到限位器積木
+Blockly.Blocks["drv8825_run_until_limit"] = {
+    init: function () {
+        this.appendDummyInput()
+            .appendField(Blockly.Msg["DRV8825_RUN_UNTIL_LIMIT"])
+            .appendField(new Blockly.FieldDropdown([["1", "1"], ["2", "2"], ["3", "3"]]), "NUM")
+            .appendField(new Blockly.FieldDropdown([
+                [Blockly.Msg["DRV8825_CLOCKWISE"], "1"],
+                [Blockly.Msg["DRV8825_COUNTERCLOCKWISE"], "-1"]
+            ]), "DIRECTION");
+        this.appendDummyInput()
+            .appendField(Blockly.Msg["DRV8825_LIMIT_PIN"])
+            .appendField(new Blockly.FieldNumber(12, 0, 50), "LIMIT_PIN")
+            .appendField(Blockly.Msg["DRV8825_LIMIT_STATE"])
+            .appendField(new Blockly.FieldDropdown([["HIGH", "HIGH"], ["LOW", "LOW"]]), "TRIGGER_STATE")
+            .appendField(Blockly.Msg["DRV8825_LIMIT_STOP"]);
+        this.setInputsInline(true);
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
+        this.setColour(Blockly.Msg["DRV8825_HUE"]);
+        this.setTooltip(Blockly.Msg["DRV8825_RUN_UNTIL_LIMIT_TOOLTIP"]);
+        this.setHelpUrl("");
+    }
+};

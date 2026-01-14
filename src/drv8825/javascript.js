@@ -93,3 +93,41 @@ Blockly.Arduino['drv8825_set_acceleration'] = function (block) {
     var code = 'stepper_' + num + '.setAcceleration(' + accel + ');\n';
     return code;
 };
+
+// DRV8825 移動到限位器
+Blockly.Arduino['drv8825_move_until_limit'] = function (block) {
+    var num = block.getFieldValue('NUM');
+    var direction = block.getFieldValue('DIRECTION');
+    var limitPin = block.getFieldValue('LIMIT_PIN');
+    var triggerState = block.getFieldValue('TRIGGER_STATE');
+
+    Blockly.Arduino.setups_['setup_limit_pin_' + limitPin] =
+        'pinMode(' + limitPin + ', INPUT_PULLUP);  // 限位開關腳位';
+
+    var code = '// 移動到限位器觸發為止\n';
+    code += 'while (digitalRead(' + limitPin + ') != ' + triggerState + ') {\n';
+    code += '  stepper_' + num + '.setSpeed(' + direction + ' * stepper_' + num + '.maxSpeed());\n';
+    code += '  stepper_' + num + '.runSpeed();\n';
+    code += '}\n';
+    code += 'stepper_' + num + '.stop();\n';
+    return code;
+};
+
+// DRV8825 連續旋轉到限位器
+Blockly.Arduino['drv8825_run_until_limit'] = function (block) {
+    var num = block.getFieldValue('NUM');
+    var direction = block.getFieldValue('DIRECTION');
+    var limitPin = block.getFieldValue('LIMIT_PIN');
+    var triggerState = block.getFieldValue('TRIGGER_STATE');
+
+    Blockly.Arduino.setups_['setup_limit_pin_' + limitPin] =
+        'pinMode(' + limitPin + ', INPUT_PULLUP);  // 限位開關腳位';
+
+    var code = '// 連續旋轉到限位器觸發為止\n';
+    code += 'while (digitalRead(' + limitPin + ') != ' + triggerState + ') {\n';
+    code += '  stepper_' + num + '.setSpeed(' + direction + ' * stepper_' + num + '.maxSpeed());\n';
+    code += '  stepper_' + num + '.runSpeed();\n';
+    code += '}\n';
+    code += 'stepper_' + num + '.stop();\n';
+    return code;
+};

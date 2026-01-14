@@ -33,3 +33,12 @@ Blockly.Msg["DRV8825_DISABLE_TOOLTIP"] = "Disable stepper motor (power saving mo
 Blockly.Msg["DRV8825_SET_ACCEL"] = "Set Motor #";
 Blockly.Msg["DRV8825_ACCEL_VALUE"] = "acceleration (steps/s²)";
 Blockly.Msg["DRV8825_SET_ACCEL_TOOLTIP"] = "Set stepper motor acceleration (higher value = faster acceleration)";
+
+// Limit Switch Blocks
+Blockly.Msg["DRV8825_MOVE_UNTIL_LIMIT"] = "Motor #";
+Blockly.Msg["DRV8825_RUN_UNTIL_LIMIT"] = "Motor #";
+Blockly.Msg["DRV8825_LIMIT_PIN"] = "move until limit pin";
+Blockly.Msg["DRV8825_LIMIT_STATE"] = "is";
+Blockly.Msg["DRV8825_LIMIT_STOP"] = "then stop";
+Blockly.Msg["DRV8825_MOVE_UNTIL_LIMIT_TOOLTIP"] = "Move stepper motor in specified direction until limit switch is triggered";
+Blockly.Msg["DRV8825_RUN_UNTIL_LIMIT_TOOLTIP"] = "Run stepper motor continuously until limit switch is triggered";

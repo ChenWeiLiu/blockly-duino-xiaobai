@@ -33,3 +33,12 @@ Blockly.Msg["DRV8825_DISABLE_TOOLTIP"] = "停用馬達（省電模式，馬達�
 Blockly.Msg["DRV8825_SET_ACCEL"] = "設定馬達 #";
 Blockly.Msg["DRV8825_ACCEL_VALUE"] = "加速度 (步/秒²)";
 Blockly.Msg["DRV8825_SET_ACCEL_TOOLTIP"] = "設定步進馬達的加速度（數值越大加速越快）";
+
+// 限位器積木
+Blockly.Msg["DRV8825_MOVE_UNTIL_LIMIT"] = "馬達 #";
+Blockly.Msg["DRV8825_RUN_UNTIL_LIMIT"] = "馬達 #";
+Blockly.Msg["DRV8825_LIMIT_PIN"] = "移動到限位腳位";
+Blockly.Msg["DRV8825_LIMIT_STATE"] = "為";
+Blockly.Msg["DRV8825_LIMIT_STOP"] = "時停止";
+Blockly.Msg["DRV8825_MOVE_UNTIL_LIMIT_TOOLTIP"] = "讓步進馬達朝指定方向移動，直到限位開關被觸發為止";
+Blockly.Msg["DRV8825_RUN_UNTIL_LIMIT_TOOLTIP"] = "讓步進馬達以設定速度連續旋轉，直到限位開關被觸發為止";

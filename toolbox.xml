@@ -236,6 +236,22 @@
                 </shadow>
             </value>
         </block>
+        
+        <!-- DRV8825 移動到限位器 -->
+        <block type="drv8825_move_until_limit">
+            <field name="NUM">1</field>
+            <field name="DIRECTION">1</field>
+            <field name="LIMIT_PIN">12</field>
+            <field name="TRIGGER_STATE">HIGH</field>
+        </block>
+        
+        <!-- DRV8825 連續旋轉到限位器 -->
+        <block type="drv8825_run_until_limit">
+            <field name="NUM">1</field>
+            <field name="DIRECTION">1</field>
+            <field name="LIMIT_PIN">12</field>
+            <field name="TRIGGER_STATE">HIGH</field>
+        </block>
     </category>
     
     <!-- ========== DS18B20 溫度感測器模組 ========== -->
