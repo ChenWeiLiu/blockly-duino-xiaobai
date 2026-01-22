@@ -12,7 +12,7 @@ Blockly.Blocks["drv8825_init"] = {
             .appendField("ENABLE")
             .appendField(new Blockly.FieldNumber(4, 0, 50), "ENABLE_PIN")
             .appendField(Blockly.Msg["DRV8825_STEPS_PER_REV"])
-            .appendField(new Blockly.FieldNumber(24, 1, 400), "STEPS_PER_REV");
+            .appendField(new Blockly.FieldNumber(24, 1, 6400), "STEPS_PER_REV");
         this.setInputsInline(true);
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
