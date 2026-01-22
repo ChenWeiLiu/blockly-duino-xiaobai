@@ -33,3 +33,16 @@ Blockly.Msg["ESPNOW_SENDER_MAC_TOOLTIP"] = "Get the MAC address of the device th
 
 Blockly.Msg["ESPNOW_SEND_STATUS"] = "Send successful?";
 Blockly.Msg["ESPNOW_SEND_STATUS_TOOLTIP"] = "Check if the last send was successful (true/false)";
+
+// Variable send and parse
+Blockly.Msg["ESPNOW_SEND_VAR"] = "Send variable";
+Blockly.Msg["ESPNOW_VAR_VALUE"] = "value";
+Blockly.Msg["ESPNOW_SEND_VAR_TOOLTIP"] = "Send variable name and value (format: var=value)";
+
+Blockly.Msg["ESPNOW_BROADCAST_VAR"] = "Broadcast variable";
+Blockly.Msg["ESPNOW_BROADCAST_VAR_TOOLTIP"] = "Broadcast variable name and value to all devices";
+
+Blockly.Msg["ESPNOW_PARSE_VAR"] = "Parse variable";
+Blockly.Msg["ESPNOW_PARSE_VAR_FROM"] = "'s value";
+Blockly.Msg["ESPNOW_PARSE_VAR_TOOLTIP"] = "Parse the value of specified variable from received data";
+

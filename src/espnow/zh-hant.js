@@ -33,3 +33,15 @@ Blockly.Msg["ESPNOW_SENDER_MAC_TOOLTIP"] = "取得最後一次發送資料的裝
 
 Blockly.Msg["ESPNOW_SEND_STATUS"] = "發送成功?";
 Blockly.Msg["ESPNOW_SEND_STATUS_TOOLTIP"] = "檢查最後一次發送是否成功 (true/false)";
+
+// 變數發送與解析
+Blockly.Msg["ESPNOW_SEND_VAR"] = "發送變數";
+Blockly.Msg["ESPNOW_VAR_VALUE"] = "數值";
+Blockly.Msg["ESPNOW_SEND_VAR_TOOLTIP"] = "發送變數名稱與數值 (格式: 變數=數值)";
+
+Blockly.Msg["ESPNOW_BROADCAST_VAR"] = "廣播變數";
+Blockly.Msg["ESPNOW_BROADCAST_VAR_TOOLTIP"] = "廣播變數名稱與數值給所有裝置";
+
+Blockly.Msg["ESPNOW_PARSE_VAR"] = "解析變數";
+Blockly.Msg["ESPNOW_PARSE_VAR_FROM"] = "的數值";
+Blockly.Msg["ESPNOW_PARSE_VAR_TOOLTIP"] = "從接收到的資料中解析指定變數的數值";

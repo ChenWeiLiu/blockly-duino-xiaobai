@@ -157,3 +157,53 @@ Blockly.Arduino['espnow_send_status'] = function (block) {
     var code = 'espnow_sendSuccess';
     return [code, Blockly.Arduino.ORDER_ATOMIC];
 };
+
+// ESP-NOW 發送變數 (變數名稱=數值)
+Blockly.Arduino['espnow_send_var'] = function (block) {
+    var varName = Blockly.Arduino.valueToCode(block, 'VAR_NAME', Blockly.Arduino.ORDER_ATOMIC) || '"var"';
+    var varValue = Blockly.Arduino.valueToCode(block, 'VAR_VALUE', Blockly.Arduino.ORDER_ATOMIC) || '0';
+    var mac = Blockly.Arduino.valueToCode(block, 'MAC', Blockly.Arduino.ORDER_ATOMIC) || '"00:00:00:00:00:00"';
+
+    var code =
+        '{\n' +
+        '  uint8_t peerAddr[6];\n' +
+        '  espnow_parseMac(' + mac + '.c_str(), peerAddr);\n' +
+        '  String sendData = String(' + varName + ') + "=" + String(' + varValue + ');\n' +
+        '  esp_now_send(peerAddr, (uint8_t*)sendData.c_str(), sendData.length());\n' +
+        '}\n';
+    return code;
+};
+
+// ESP-NOW 廣播變數 (變數名稱=數值)
+Blockly.Arduino['espnow_broadcast_var'] = function (block) {
+    var varName = Blockly.Arduino.valueToCode(block, 'VAR_NAME', Blockly.Arduino.ORDER_ATOMIC) || '"var"';
+    var varValue = Blockly.Arduino.valueToCode(block, 'VAR_VALUE', Blockly.Arduino.ORDER_ATOMIC) || '0';
+
+    var code =
+        '{\n' +
+        '  uint8_t broadcastAddr[6] = {0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF};\n' +
+        '  String sendData = String(' + varName + ') + "=" + String(' + varValue + ');\n' +
+        '  esp_now_send(broadcastAddr, (uint8_t*)sendData.c_str(), sendData.length());\n' +
+        '}\n';
+    return code;
+};
+
+// ESP-NOW 解析變數值
+Blockly.Arduino['espnow_parse_var'] = function (block) {
+    var varName = Blockly.Arduino.valueToCode(block, 'VAR_NAME', Blockly.Arduino.ORDER_ATOMIC) || '"var"';
+
+    // 加入解析函式
+    Blockly.Arduino.definitions_['espnow_parse_var_func'] =
+        '// 解析變數值 (格式: name=value)\n' +
+        'String espnow_parseVar(String data, String varName) {\n' +
+        '  int startIdx = data.indexOf(varName + "=");\n' +
+        '  if (startIdx == -1) return "";\n' +
+        '  startIdx += varName.length() + 1;\n' +
+        '  int endIdx = data.indexOf(",", startIdx);\n' +
+        '  if (endIdx == -1) endIdx = data.length();\n' +
+        '  return data.substring(startIdx, endIdx);\n' +
+        '}';
+
+    var code = 'espnow_parseVar(espnow_receivedData, ' + varName + ')';
+    return [code, Blockly.Arduino.ORDER_ATOMIC];
+};

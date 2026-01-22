@@ -134,3 +134,58 @@ Blockly.Blocks["espnow_send_status"] = {
         this.setHelpUrl("");
     }
 };
+
+// ESP-NOW 發送變數 (變數名稱=數值)
+Blockly.Blocks["espnow_send_var"] = {
+    init: function () {
+        this.appendValueInput("VAR_NAME")
+            .setCheck("String")
+            .appendField(Blockly.Msg["ESPNOW_SEND_VAR"]);
+        this.appendValueInput("VAR_VALUE")
+            .setCheck(null)
+            .appendField(Blockly.Msg["ESPNOW_VAR_VALUE"]);
+        this.appendValueInput("MAC")
+            .setCheck("String")
+            .appendField(Blockly.Msg["ESPNOW_TO_MAC"]);
+        this.setInputsInline(true);
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
+        this.setColour(Blockly.Msg["ESPNOW_HUE"]);
+        this.setTooltip(Blockly.Msg["ESPNOW_SEND_VAR_TOOLTIP"]);
+        this.setHelpUrl("");
+    }
+};
+
+// ESP-NOW 廣播變數 (變數名稱=數值)
+Blockly.Blocks["espnow_broadcast_var"] = {
+    init: function () {
+        this.appendValueInput("VAR_NAME")
+            .setCheck("String")
+            .appendField(Blockly.Msg["ESPNOW_BROADCAST_VAR"]);
+        this.appendValueInput("VAR_VALUE")
+            .setCheck(null)
+            .appendField(Blockly.Msg["ESPNOW_VAR_VALUE"]);
+        this.setInputsInline(true);
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
+        this.setColour(Blockly.Msg["ESPNOW_HUE"]);
+        this.setTooltip(Blockly.Msg["ESPNOW_BROADCAST_VAR_TOOLTIP"]);
+        this.setHelpUrl("");
+    }
+};
+
+// ESP-NOW 解析變數值
+Blockly.Blocks["espnow_parse_var"] = {
+    init: function () {
+        this.appendValueInput("VAR_NAME")
+            .setCheck("String")
+            .appendField(Blockly.Msg["ESPNOW_PARSE_VAR"]);
+        this.appendDummyInput()
+            .appendField(Blockly.Msg["ESPNOW_PARSE_VAR_FROM"]);
+        this.setInputsInline(true);
+        this.setOutput(true, "String");
+        this.setColour(Blockly.Msg["ESPNOW_HUE"]);
+        this.setTooltip(Blockly.Msg["ESPNOW_PARSE_VAR_TOOLTIP"]);
+        this.setHelpUrl("");
+    }
+};
