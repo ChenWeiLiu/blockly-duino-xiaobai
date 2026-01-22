@@ -495,5 +495,67 @@
             </value>
         </block>
     </category>
+    
+    <!-- ========== ESP-NOW 無線通訊模組 ========== -->
+    <category id="category_espnow" name="%{BKY_ESPNOW}" colour="%{BKY_ESPNOW_HUE}">
+        <!-- ESP-NOW 初始化 -->
+        <block type="espnow_init"></block>
+        
+        <!-- 取得 MAC 位址 -->
+        <block type="espnow_get_mac"></block>
+        
+        <!-- 新增對等裝置 -->
+        <block type="espnow_add_peer">
+            <value name="MAC">
+                <shadow type="text">
+                    <field name="TEXT">AA:BB:CC:DD:EE:FF</field>
+                </shadow>
+            </value>
+        </block>
+        
+        <!-- 新增廣播位址 -->
+        <block type="espnow_add_broadcast"></block>
+        
+        <sep gap="16"></sep>
+        <label text="發送 Send"></label>
+        
+        <!-- 發送資料 -->
+        <block type="espnow_send">
+            <value name="DATA">
+                <shadow type="text">
+                    <field name="TEXT">Hello</field>
+                </shadow>
+            </value>
+            <value name="MAC">
+                <shadow type="text">
+                    <field name="TEXT">AA:BB:CC:DD:EE:FF</field>
+                </shadow>
+            </value>
+        </block>
+        
+        <!-- 廣播資料 -->
+        <block type="espnow_broadcast">
+            <value name="DATA">
+                <shadow type="text">
+                    <field name="TEXT">Hello</field>
+                </shadow>
+            </value>
+        </block>
+        
+        <!-- 發送狀態 -->
+        <block type="espnow_send_status"></block>
+        
+        <sep gap="16"></sep>
+        <label text="接收 Receive"></label>
+        
+        <!-- 當收到資料時 -->
+        <block type="espnow_on_receive"></block>
+        
+        <!-- 接收到的資料 -->
+        <block type="espnow_received_data"></block>
+        
+        <!-- 發送者 MAC -->
+        <block type="espnow_sender_mac"></block>
+    </category>
 
 </category>
