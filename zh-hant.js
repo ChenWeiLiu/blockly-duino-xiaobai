@@ -1,5 +1,5 @@
-﻿// 小白積木
-Blockly.Msg["XIAOBAI"] = "小白積木";
+﻿// 科展積木
+Blockly.Msg["XIAOBAI"] = "科展積木";
 Blockly.Msg["XIAOBAI_HUE"] = "160";
 
 // 使用固定相對路徑載入子模組

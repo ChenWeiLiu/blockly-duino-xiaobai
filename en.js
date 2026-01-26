@@ -1,5 +1,5 @@
-﻿// Xiaobai Blocks Menu
-Blockly.Msg["XIAOBAI"] = "Xiaobai Blocks";
+﻿// Science Fair Blocks Menu
+Blockly.Msg["XIAOBAI"] = "Science Fair Blocks";
 Blockly.Msg["XIAOBAI_HUE"] = "160";
 
 // 使用固定相對路徑載入子模組
