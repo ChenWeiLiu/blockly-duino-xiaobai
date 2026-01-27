@@ -1,8 +1,10 @@
 <xml>
-<category><name>%{BKY_XIAOBAI}</name><lang>Xiaobai Blocks</lang></category>
+<category><name>%{BKY_XIAOBAI}</name><lang>Science Fair Blocks</lang></category>
 <category><name>%{BKY_HX711}</name><lang>HX711 Weight Sensor</lang></category>
 <category><name>%{BKY_SERIAL}</name><lang>Serial I/O</lang></category>
 <category><name>%{BKY_ESP32_IO}</name><lang>ESP32 Digital/Analog</lang></category>
 <category><name>%{BKY_DS18B20}</name><lang>DS18B20 Temperature Sensor</lang></category>
 <category><name>%{BKY_SDCARD}</name><lang>MicroSD Card</lang></category>
+<category><name>%{BKY_DRV8825}</name><lang>DRV8825 Stepper Motor</lang></category>
+<category><name>%{BKY_ESPNOW}</name><lang>ESP-NOW Wireless</lang></category>
 </xml>

@@ -5,5 +5,7 @@
 <category><name>%{BKY_ESP32_IO}</name><lang>ESP32 數位/類比</lang></category>
 <category><name>%{BKY_DS18B20}</name><lang>DS18B20 溫度感測器</lang></category>
 <category><name>%{BKY_SDCARD}</name><lang>MicroSD 記憶卡</lang></category>
+<category><name>%{BKY_DRV8825}</name><lang>DRV8825 步進馬達</lang></category>
+<category><name>%{BKY_ESPNOW}</name><lang>ESP-NOW 無線通訊</lang></category>
 </xml>
 
