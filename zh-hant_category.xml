@@ -7,5 +7,6 @@
 <category><name>%{BKY_SDCARD}</name><lang>MicroSD 記憶卡</lang></category>
 <category><name>%{BKY_DRV8825}</name><lang>DRV8825 步進馬達</lang></category>
 <category><name>%{BKY_ESPNOW}</name><lang>ESP-NOW 無線通訊</lang></category>
+<category><name>%{BKY_TJC_DISPLAY}</name><lang>TJC 螢幕</lang></category>
 </xml>
 

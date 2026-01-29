@@ -25,7 +25,8 @@
         basePath + 'src/ds18b20/javascript.js',
         basePath + 'src/sdcard/javascript.js',
         basePath + 'src/drv8825/javascript.js',
-        basePath + 'src/espnow/javascript.js'
+        basePath + 'src/espnow/javascript.js',
+        basePath + 'src/tjc_display/javascript.js'
     ];
 
     for (var i = 0; i < scripts.length; i++) {

@@ -7,4 +7,5 @@
 <category><name>%{BKY_SDCARD}</name><lang>MicroSD Card</lang></category>
 <category><name>%{BKY_DRV8825}</name><lang>DRV8825 Stepper Motor</lang></category>
 <category><name>%{BKY_ESPNOW}</name><lang>ESP-NOW Wireless</lang></category>
+<category><name>%{BKY_TJC_DISPLAY}</name><lang>TJC Display</lang></category>
 </xml>

@@ -602,5 +602,69 @@
             </value>
         </block>
     </category>
+    
+    <!-- ========== TJC 串口屏模組 ========== -->
+    <category id="category_tjc_display" name="%{BKY_TJC_DISPLAY}" colour="%{BKY_XIAOBAI_HUE}">
+        <!-- TJC 初始化 -->
+        <block type="xiaobai_tjc_init">
+            <field name="SERIAL_NAME">Serial2</field>
+            <field name="BAUD_RATE">9600</field>
+            <field name="RX_PIN">16</field>
+            <field name="TX_PIN">17</field>
+        </block>
+        
+        <!-- TJC 設定文字元件 -->
+        <block type="xiaobai_tjc_set_text">
+            <field name="COMPONENT">t0</field>
+            <value name="TEXT">
+                <shadow type="text">
+                    <field name="TEXT">Hello</field>
+                </shadow>
+            </value>
+        </block>
+        
+        <!-- TJC 設定數值元件 -->
+        <block type="xiaobai_tjc_set_number">
+            <field name="COMPONENT">n0</field>
+            <value name="VALUE">
+                <shadow type="math_number">
+                    <field name="NUM">0</field>
+                </shadow>
+            </value>
+        </block>
+        
+        <!-- TJC 切換頁面 -->
+        <block type="xiaobai_tjc_set_page">
+            <field name="PAGE_ID">0</field>
+        </block>
+        
+        <!-- TJC 設定元件可見性 -->
+        <block type="xiaobai_tjc_set_visibility">
+            <field name="COMPONENT">t0</field>
+            <field name="VISIBLE">1</field>
+        </block>
+        
+        <!-- TJC 設定進度條 -->
+        <block type="xiaobai_tjc_set_progress">
+            <field name="COMPONENT">j0</field>
+            <value name="VALUE">
+                <shadow type="math_number">
+                    <field name="NUM">50</field>
+                </shadow>
+            </value>
+        </block>
+        
+        <sep gap="16"></sep>
+        <label text="觸控事件 Touch Events"></label>
+        
+        <!-- TJC 監聽觸控事件 -->
+        <block type="xiaobai_tjc_on_touch"></block>
+        
+        <!-- TJC 觸控元件 ID -->
+        <block type="xiaobai_tjc_touch_id"></block>
+        
+        <!-- TJC 觸控頁面 ID -->
+        <block type="xiaobai_tjc_touch_page"></block>
+    </category>
 
 </category>

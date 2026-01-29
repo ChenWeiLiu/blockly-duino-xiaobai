@@ -25,7 +25,8 @@
         basePath + 'src/ds18b20/blocks.js',
         basePath + 'src/sdcard/blocks.js',
         basePath + 'src/drv8825/blocks.js',
-        basePath + 'src/espnow/blocks.js'
+        basePath + 'src/espnow/blocks.js',
+        basePath + 'src/tjc_display/blocks.js'
     ];
 
     for (var i = 0; i < scripts.length; i++) {
