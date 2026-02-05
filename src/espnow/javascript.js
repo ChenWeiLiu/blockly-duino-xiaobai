@@ -130,7 +130,7 @@ Blockly.Arduino['espnow_on_receive'] = function (block) {
     var statements = Blockly.Arduino.statementToCode(block, 'CALLBACK');
 
     // 建立使用者回呼函式
-    Blockly.Arduino.definitions_['espnow_user_callback_func'] =
+    Blockly.Arduino.definitions_['zzz_espnow_user_callback_func'] =
         '// 使用者定義的 ESP-NOW 接收處理\n' +
         'void espnow_userCallbackFunc() {\n' +
         statements +
