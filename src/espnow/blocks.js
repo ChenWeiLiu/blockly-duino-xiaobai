@@ -189,3 +189,19 @@ Blockly.Blocks["espnow_parse_var"] = {
         this.setHelpUrl("");
     }
 };
+
+// ESP-NOW 判斷是否有收到變數
+Blockly.Blocks["espnow_has_var"] = {
+    init: function () {
+        this.appendValueInput("VAR_NAME")
+            .setCheck("String")
+            .appendField(Blockly.Msg["ESPNOW_HAS_VAR"]);
+        this.appendDummyInput()
+            .appendField(Blockly.Msg["ESPNOW_HAS_VAR_END"]);
+        this.setInputsInline(true);
+        this.setOutput(true, "Boolean");
+        this.setColour(Blockly.Msg["ESPNOW_HUE"]);
+        this.setTooltip(Blockly.Msg["ESPNOW_HAS_VAR_TOOLTIP"]);
+        this.setHelpUrl("");
+    }
+};

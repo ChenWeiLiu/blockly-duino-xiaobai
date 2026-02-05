@@ -45,3 +45,7 @@ Blockly.Msg["ESPNOW_BROADCAST_VAR_TOOLTIP"] = "廣播變數名稱與數值給所
 Blockly.Msg["ESPNOW_PARSE_VAR"] = "解析變數";
 Blockly.Msg["ESPNOW_PARSE_VAR_FROM"] = "的數值";
 Blockly.Msg["ESPNOW_PARSE_VAR_TOOLTIP"] = "從接收到的資料中解析指定變數的數值";
+
+Blockly.Msg["ESPNOW_HAS_VAR"] = "有收到變數";
+Blockly.Msg["ESPNOW_HAS_VAR_END"] = "?";
+Blockly.Msg["ESPNOW_HAS_VAR_TOOLTIP"] = "判斷接收到的資料中是否包含指定的變數";

@@ -207,3 +207,18 @@ Blockly.Arduino['espnow_parse_var'] = function (block) {
     var code = 'espnow_parseVar(espnow_receivedData, ' + varName + ')';
     return [code, Blockly.Arduino.ORDER_ATOMIC];
 };
+
+// ESP-NOW 判斷是否有收到變數
+Blockly.Arduino['espnow_has_var'] = function (block) {
+    var varName = Blockly.Arduino.valueToCode(block, 'VAR_NAME', Blockly.Arduino.ORDER_ATOMIC) || '"var"';
+
+    // 加入判斷函式
+    Blockly.Arduino.definitions_['espnow_has_var_func'] =
+        '// 判斷是否有收到變數\n' +
+        'bool espnow_hasVar(String data, String varName) {\n' +
+        '  return data.indexOf(varName + "=") != -1;\n' +
+        '}';
+
+    var code = 'espnow_hasVar(espnow_receivedData, ' + varName + ')';
+    return [code, Blockly.Arduino.ORDER_ATOMIC];
+};

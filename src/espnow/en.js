@@ -46,3 +46,6 @@ Blockly.Msg["ESPNOW_PARSE_VAR"] = "Parse variable";
 Blockly.Msg["ESPNOW_PARSE_VAR_FROM"] = "'s value";
 Blockly.Msg["ESPNOW_PARSE_VAR_TOOLTIP"] = "Parse the value of specified variable from received data";
 
+Blockly.Msg["ESPNOW_HAS_VAR"] = "Has received variable";
+Blockly.Msg["ESPNOW_HAS_VAR_END"] = "?";
+Blockly.Msg["ESPNOW_HAS_VAR_TOOLTIP"] = "Check if the received data contains the specified variable";

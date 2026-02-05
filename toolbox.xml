@@ -601,6 +601,15 @@
                 </shadow>
             </value>
         </block>
+        
+        <!-- 判斷是否有收到變數 -->
+        <block type="espnow_has_var">
+            <value name="VAR_NAME">
+                <shadow type="text">
+                    <field name="TEXT">temp</field>
+                </shadow>
+            </value>
+        </block>
     </category>
     
     <!-- ========== TJC 串口屏模組 ========== -->
