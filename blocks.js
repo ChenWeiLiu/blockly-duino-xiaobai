@@ -28,7 +28,8 @@
         basePath + 'src/espnow/blocks.js',
         basePath + 'src/tjc_display/blocks.js',
         basePath + 'src/ina219/blocks.js',
-        basePath + 'src/tcs3200/blocks.js'
+        basePath + 'src/tcs3200/blocks.js',
+        basePath + 'src/max31865/blocks.js'
     ];
 
     for (var i = 0; i < scripts.length; i++) {

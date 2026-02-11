@@ -742,5 +742,26 @@
             <field name="FREQ">20</field>
         </block>
     </category>
+    
+    <!-- ========== MAX31865 PT100 溫度感測器模組 ========== -->
+    <category id="category_max31865" name="%{BKY_MAX31865}" colour="%{BKY_XIAOBAI_HUE}">
+        <!-- MAX31865 初始化 -->
+        <block type="xiaobai_max31865_init">
+            <field name="CS_PIN">5</field>
+            <field name="PT_TYPE">PT100</field>
+        </block>
+        
+        <!-- MAX31865 讀取攝氏溫度 -->
+        <block type="xiaobai_max31865_read_celsius"></block>
+        
+        <!-- MAX31865 讀取華氏溫度 -->
+        <block type="xiaobai_max31865_read_fahrenheit"></block>
+        
+        <!-- MAX31865 讀取電阻值 -->
+        <block type="xiaobai_max31865_read_resistance"></block>
+        
+        <!-- MAX31865 檢查錯誤 -->
+        <block type="xiaobai_max31865_check_fault"></block>
+    </category>
 
 </category>
