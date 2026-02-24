@@ -182,15 +182,35 @@ Blockly.Blocks["espnow_parse_var"] = {
             .appendField(Blockly.Msg["ESPNOW_PARSE_VAR"]);
         this.appendDummyInput()
             .appendField(Blockly.Msg["ESPNOW_PARSE_VAR_FROM"]);
-        this.appendValueInput("INDEX")
-            .setCheck("Number")
-            .appendField(Blockly.Msg["ESPNOW_PARSE_INDEX"]);
-        this.appendDummyInput()
-            .appendField(Blockly.Msg["ESPNOW_PARSE_INDEX_END"]);
         this.setInputsInline(true);
         this.setOutput(true, "String");
         this.setColour(Blockly.Msg["ESPNOW_HUE"]);
         this.setTooltip(Blockly.Msg["ESPNOW_PARSE_VAR_TOOLTIP"]);
+        this.setHelpUrl("");
+    }
+};
+
+// ESP-NOW 字串分割並取指定項目
+Blockly.Blocks["espnow_split_string"] = {
+    init: function () {
+        this.appendDummyInput()
+            .appendField(Blockly.Msg["ESPNOW_SPLIT_STRING"]);
+        this.appendValueInput("TEXT")
+            .setCheck("String");
+        this.appendDummyInput()
+            .appendField(Blockly.Msg["ESPNOW_SPLIT_DELIMITER"]);
+        this.appendValueInput("DELIMITER")
+            .setCheck("String");
+        this.appendDummyInput()
+            .appendField(Blockly.Msg["ESPNOW_SPLIT_GET_INDEX"]);
+        this.appendValueInput("INDEX")
+            .setCheck("Number");
+        this.appendDummyInput()
+            .appendField(Blockly.Msg["ESPNOW_SPLIT_INDEX_END"]);
+        this.setInputsInline(true);
+        this.setOutput(true, "String");
+        this.setColour(Blockly.Msg["ESPNOW_HUE"]);
+        this.setTooltip(Blockly.Msg["ESPNOW_SPLIT_STRING_TOOLTIP"]);
         this.setHelpUrl("");
     }
 };

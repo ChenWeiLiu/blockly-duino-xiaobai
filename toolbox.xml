@@ -602,6 +602,20 @@
             </value>
         </block>
         
+        <!-- 字串分割 -->
+        <block type="espnow_split_string">
+            <value name="DELIMITER">
+                <shadow type="text">
+                    <field name="TEXT">,</field>
+                </shadow>
+            </value>
+            <value name="INDEX">
+                <shadow type="math_number">
+                    <field name="NUM">0</field>
+                </shadow>
+            </value>
+        </block>
+        
         <!-- 判斷是否有收到變數 -->
         <block type="espnow_has_var">
             <value name="VAR_NAME">

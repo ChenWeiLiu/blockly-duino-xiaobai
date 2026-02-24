@@ -43,10 +43,14 @@ Blockly.Msg["ESPNOW_BROADCAST_VAR"] = "Broadcast variable";
 Blockly.Msg["ESPNOW_BROADCAST_VAR_TOOLTIP"] = "Broadcast variable name and value to all devices";
 
 Blockly.Msg["ESPNOW_PARSE_VAR"] = "Parse variable";
-Blockly.Msg["ESPNOW_PARSE_VAR_FROM"] = "'s value, split by comma, get item at index";
-Blockly.Msg["ESPNOW_PARSE_INDEX"] = "";
-Blockly.Msg["ESPNOW_PARSE_INDEX_END"] = "";
-Blockly.Msg["ESPNOW_PARSE_VAR_TOOLTIP"] = "Parse variable value and optionally get Nth item if separated by commas (0-indexed). Defaults to 0.";
+Blockly.Msg["ESPNOW_PARSE_VAR_FROM"] = "'s value";
+Blockly.Msg["ESPNOW_PARSE_VAR_TOOLTIP"] = "Parse the value of specified variable from received data (stops at newline)";
+
+Blockly.Msg["ESPNOW_SPLIT_STRING"] = "Split string";
+Blockly.Msg["ESPNOW_SPLIT_DELIMITER"] = "by delimiter";
+Blockly.Msg["ESPNOW_SPLIT_GET_INDEX"] = ", get item at index";
+Blockly.Msg["ESPNOW_SPLIT_INDEX_END"] = "";
+Blockly.Msg["ESPNOW_SPLIT_STRING_TOOLTIP"] = "Split text by a specific delimiter and get the item at the specified index (0-based).";
 
 Blockly.Msg["ESPNOW_HAS_VAR"] = "Has received variable";
 Blockly.Msg["ESPNOW_HAS_VAR_END"] = "?";

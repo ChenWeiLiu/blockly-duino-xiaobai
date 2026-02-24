@@ -191,7 +191,6 @@ Blockly.Arduino['espnow_broadcast_var'] = function (block) {
 // ESP-NOW 解析變數值
 Blockly.Arduino['espnow_parse_var'] = function (block) {
     var varName = Blockly.Arduino.valueToCode(block, 'VAR_NAME', Blockly.Arduino.ORDER_ATOMIC) || '"var"';
-    var index = Blockly.Arduino.valueToCode(block, 'INDEX', Blockly.Arduino.ORDER_ATOMIC) || '0';
 
     // 加入解析函式
     Blockly.Arduino.definitions_['espnow_parse_var_func'] =
@@ -200,33 +199,40 @@ Blockly.Arduino['espnow_parse_var'] = function (block) {
         '  int startIdx = data.indexOf(varName + "=");\n' +
         '  if (startIdx == -1) return "";\n' +
         '  startIdx += varName.length() + 1;\n' +
-        '  int endIdx = data.indexOf(",", startIdx);\n' +
+        '  // 取到下一個換行或結束 (考慮多重變數發送)，如果沒有多重變數預設直接拿到底\n' +
+        '  int endIdx = data.indexOf("\\n", startIdx);\n' +
         '  if (endIdx == -1) endIdx = data.length();\n' +
-        '  // 只取到該變數的結尾，或者是下一個換行/變數的開始（這裡以最簡單直接找 \",\" 作為區隔若有其他變數連續）\n' +
-        '  // 為了避免截斷使用者想用陣列的逗號，我們假設一筆發送就是一個變數。若有多變數格式建議用 JSON。\n' +
-        '  // 在此保留原本邏輯，把 data 到底都給這個變數（如果有陣列逗號才不會被截斷）\n' +
-        '  // 如果真的有其他變數 (如 temp=12,hum=34)，這裡的 indexOf \",\" 會讓陣列功能失效。\n' +
-        '  // 【修正】我們讓 parseVar 回傳直到下個變數（或結尾）之前的全部字串。\n' +
-        '  return data.substring(startIdx);\n' +
+        '  return data.substring(startIdx, endIdx);\n' +
         '}';
 
-    Blockly.Arduino.definitions_['espnow_get_index_func'] =
-        '// 以逗號分割字串並取得第 index 項目\n' +
-        'String espnow_getIndexValue(String data, int index) {\n' +
+    var code = 'espnow_parseVar(espnow_receivedData, ' + varName + ')';
+    return [code, Blockly.Arduino.ORDER_ATOMIC];
+};
+
+// ESP-NOW 字串分割並取指定項目
+Blockly.Arduino['espnow_split_string'] = function (block) {
+    var text = Blockly.Arduino.valueToCode(block, 'TEXT', Blockly.Arduino.ORDER_ATOMIC) || '""';
+    var delimiter = Blockly.Arduino.valueToCode(block, 'DELIMITER', Blockly.Arduino.ORDER_ATOMIC) || '","';
+    var index = Blockly.Arduino.valueToCode(block, 'INDEX', Blockly.Arduino.ORDER_ATOMIC) || '0';
+
+    Blockly.Arduino.definitions_['espnow_split_string_func'] =
+        '// 依分隔符號分割字串並取得第 index 項目\n' +
+        'String espnow_splitString(String data, String delimiter, int index) {\n' +
         '  int found = 0;\n' +
         '  int strIndex[] = {0, -1};\n' +
         '  int maxIndex = data.length() - 1;\n' +
         '  for (int i = 0; i <= maxIndex && found <= index; i++) {\n' +
-        '    if (data.charAt(i) == \',\' || i == maxIndex) {\n' +
+        '    if (data.substring(i, i + delimiter.length()) == delimiter || i == maxIndex) {\n' +
         '      found++;\n' +
         '      strIndex[0] = strIndex[1] + 1;\n' +
         '      strIndex[1] = (i == maxIndex) ? i + 1 : i;\n' +
+        '      i += delimiter.length() - 1;\n' +
         '    }\n' +
         '  }\n' +
         '  return found > index ? data.substring(strIndex[0], strIndex[1]) : data;\n' +
         '}';
 
-    var code = 'espnow_getIndexValue(espnow_parseVar(espnow_receivedData, ' + varName + '), ' + index + ')';
+    var code = 'espnow_splitString(' + text + ', ' + delimiter + ', ' + index + ')';
     return [code, Blockly.Arduino.ORDER_ATOMIC];
 };
 
