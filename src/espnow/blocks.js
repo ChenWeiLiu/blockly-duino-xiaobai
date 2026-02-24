@@ -182,6 +182,11 @@ Blockly.Blocks["espnow_parse_var"] = {
             .appendField(Blockly.Msg["ESPNOW_PARSE_VAR"]);
         this.appendDummyInput()
             .appendField(Blockly.Msg["ESPNOW_PARSE_VAR_FROM"]);
+        this.appendValueInput("INDEX")
+            .setCheck("Number")
+            .appendField(Blockly.Msg["ESPNOW_PARSE_INDEX"]);
+        this.appendDummyInput()
+            .appendField(Blockly.Msg["ESPNOW_PARSE_INDEX_END"]);
         this.setInputsInline(true);
         this.setOutput(true, "String");
         this.setColour(Blockly.Msg["ESPNOW_HUE"]);

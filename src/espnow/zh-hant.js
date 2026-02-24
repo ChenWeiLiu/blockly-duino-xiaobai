@@ -43,8 +43,10 @@ Blockly.Msg["ESPNOW_BROADCAST_VAR"] = "廣播變數";
 Blockly.Msg["ESPNOW_BROADCAST_VAR_TOOLTIP"] = "廣播變數名稱與數值給所有裝置";
 
 Blockly.Msg["ESPNOW_PARSE_VAR"] = "解析變數";
-Blockly.Msg["ESPNOW_PARSE_VAR_FROM"] = "的數值";
-Blockly.Msg["ESPNOW_PARSE_VAR_TOOLTIP"] = "從接收到的資料中解析指定變數的數值";
+Blockly.Msg["ESPNOW_PARSE_VAR_FROM"] = "的數值，以逗號分割取第";
+Blockly.Msg["ESPNOW_PARSE_INDEX"] = "項";
+Blockly.Msg["ESPNOW_PARSE_INDEX_END"] = "";
+Blockly.Msg["ESPNOW_PARSE_VAR_TOOLTIP"] = "從接收到的資料中解析變數數值，如果數字之間有逗號，可設定要取出第幾項 (從 0 開始)。全取請填 0 或不接。";
 
 Blockly.Msg["ESPNOW_HAS_VAR"] = "有收到變數";
 Blockly.Msg["ESPNOW_HAS_VAR_END"] = "?";
