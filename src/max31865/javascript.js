@@ -2,6 +2,9 @@
 
 Blockly.Arduino['xiaobai_max31865_init'] = function (block) {
     var csPin = block.getFieldValue('CS_PIN');
+    var sckPin = block.getFieldValue('SCK_PIN');
+    var sdoPin = block.getFieldValue('SDO_PIN');
+    var sdiPin = block.getFieldValue('SDI_PIN');
     var ptType = block.getFieldValue('PT_TYPE');
 
     // Set reference resistor and nominal resistance based on PT type
@@ -17,8 +20,8 @@ Blockly.Arduino['xiaobai_max31865_init'] = function (block) {
     // Add library include
     Blockly.Arduino.definitions_['include_max31865'] = '#include <Adafruit_MAX31865.h>';
 
-    // Create MAX31865 object (hardware SPI, only CS pin needed)
-    Blockly.Arduino.definitions_['define_max31865'] = 'Adafruit_MAX31865 max31865(' + csPin + ');';
+    // Create MAX31865 object (software SPI with CS, SDI, SDO, SCK pins)
+    Blockly.Arduino.definitions_['define_max31865'] = 'Adafruit_MAX31865 max31865(' + csPin + ', ' + sdiPin + ', ' + sdoPin + ', ' + sckPin + ');';
     Blockly.Arduino.definitions_['define_max31865_rnominal'] = '#define RNOMINAL ' + rNominal;
     Blockly.Arduino.definitions_['define_max31865_rref'] = '#define RREF ' + rRef;
 

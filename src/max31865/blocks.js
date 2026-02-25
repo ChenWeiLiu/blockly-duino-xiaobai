@@ -28,6 +28,13 @@ Blockly.Blocks['xiaobai_max31865_init'] = {
                 ["33", "33"]
             ]), "CS_PIN");
         this.appendDummyInput()
+            .appendField("SCK")
+            .appendField(new Blockly.FieldNumber(18, 0, 50), "SCK_PIN")
+            .appendField("SDO")
+            .appendField(new Blockly.FieldNumber(19, 0, 50), "SDO_PIN")
+            .appendField("SDI")
+            .appendField(new Blockly.FieldNumber(23, 0, 50), "SDI_PIN");
+        this.appendDummyInput()
             .appendField(Blockly.Msg.XIAOBAI_MAX31865_PT_TYPE)
             .appendField(new Blockly.FieldDropdown([
                 ["PT100", "PT100"],
