@@ -39,7 +39,13 @@ Blockly.Blocks['xiaobai_max31865_init'] = {
             .appendField(new Blockly.FieldDropdown([
                 ["PT100", "PT100"],
                 ["PT1000", "PT1000"]
-            ]), "PT_TYPE");
+            ]), "PT_TYPE")
+            .appendField(Blockly.Msg.XIAOBAI_MAX31865_WIRE_TYPE)
+            .appendField(new Blockly.FieldDropdown([
+                [Blockly.Msg.XIAOBAI_MAX31865_2WIRE, "2"],
+                [Blockly.Msg.XIAOBAI_MAX31865_3WIRE, "3"],
+                [Blockly.Msg.XIAOBAI_MAX31865_4WIRE, "4"]
+            ]), "WIRE_TYPE");
         this.setInputsInline(true);
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);

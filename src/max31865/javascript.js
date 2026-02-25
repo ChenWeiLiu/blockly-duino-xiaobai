@@ -6,6 +6,17 @@ Blockly.Arduino['xiaobai_max31865_init'] = function (block) {
     var sdoPin = block.getFieldValue('SDO_PIN');
     var sdiPin = block.getFieldValue('SDI_PIN');
     var ptType = block.getFieldValue('PT_TYPE');
+    var wireType = block.getFieldValue('WIRE_TYPE');
+
+    // Set wire type
+    var wireConst;
+    if (wireType === '2') {
+        wireConst = 'MAX31865_2WIRE';
+    } else if (wireType === '4') {
+        wireConst = 'MAX31865_4WIRE';
+    } else {
+        wireConst = 'MAX31865_3WIRE';
+    }
 
     // Set reference resistor and nominal resistance based on PT type
     var rNominal, rRef;
@@ -25,8 +36,8 @@ Blockly.Arduino['xiaobai_max31865_init'] = function (block) {
     Blockly.Arduino.definitions_['define_max31865_rnominal'] = '#define RNOMINAL ' + rNominal;
     Blockly.Arduino.definitions_['define_max31865_rref'] = '#define RREF ' + rRef;
 
-    // Initialize in setup (3-wire PT100 by default)
-    Blockly.Arduino.setups_['setup_max31865'] = 'max31865.begin(MAX31865_3WIRE);';
+    // Initialize in setup with selected wire type
+    Blockly.Arduino.setups_['setup_max31865'] = 'max31865.begin(' + wireConst + ');';
 
     return '';
 };
