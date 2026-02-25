@@ -7,6 +7,7 @@ Blockly.Arduino['xiaobai_max31865_init'] = function (block) {
     var sdiPin = block.getFieldValue('SDI_PIN');
     var ptType = block.getFieldValue('PT_TYPE');
     var wireType = block.getFieldValue('WIRE_TYPE');
+    var rRefValue = block.getFieldValue('RREF') || '430';
 
     // Set wire type
     var wireConst;
@@ -18,14 +19,12 @@ Blockly.Arduino['xiaobai_max31865_init'] = function (block) {
         wireConst = 'MAX31865_3WIRE';
     }
 
-    // Set reference resistor and nominal resistance based on PT type
-    var rNominal, rRef;
+    // Set nominal resistance based on PT type, RREF from user input
+    var rNominal;
     if (ptType === 'PT1000') {
         rNominal = '1000.0';
-        rRef = '4300.0';
     } else {
         rNominal = '100.0';
-        rRef = '430.0';
     }
 
     // Add library include
@@ -34,7 +33,7 @@ Blockly.Arduino['xiaobai_max31865_init'] = function (block) {
     // Create MAX31865 object (software SPI with CS, SDI, SDO, SCK pins)
     Blockly.Arduino.definitions_['define_max31865'] = 'Adafruit_MAX31865 max31865(' + csPin + ', ' + sdiPin + ', ' + sdoPin + ', ' + sckPin + ');';
     Blockly.Arduino.definitions_['define_max31865_rnominal'] = '#define RNOMINAL ' + rNominal;
-    Blockly.Arduino.definitions_['define_max31865_rref'] = '#define RREF ' + rRef;
+    Blockly.Arduino.definitions_['define_max31865_rref'] = '#define RREF ' + rRefValue + '.0';
 
     // Helper function: clear fault then read temperature
     Blockly.Arduino.definitions_['func_max31865_read_temp'] =

@@ -45,7 +45,9 @@ Blockly.Blocks['xiaobai_max31865_init'] = {
                 [Blockly.Msg.XIAOBAI_MAX31865_2WIRE, "2"],
                 [Blockly.Msg.XIAOBAI_MAX31865_3WIRE, "3"],
                 [Blockly.Msg.XIAOBAI_MAX31865_4WIRE, "4"]
-            ]), "WIRE_TYPE");
+            ]), "WIRE_TYPE")
+            .appendField("RREF")
+            .appendField(new Blockly.FieldNumber(430, 100, 5000), "RREF");
         this.setInputsInline(true);
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);

@@ -764,6 +764,7 @@
             <field name="CS_PIN">5</field>
             <field name="PT_TYPE">PT100</field>
             <field name="WIRE_TYPE">2</field>
+            <field name="RREF">430</field>
         </block>
         
         <!-- MAX31865 讀取攝氏溫度 -->
