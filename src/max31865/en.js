@@ -6,7 +6,12 @@ Blockly.Msg["MAX31865"] = "MAX31865 Temperature Sensor";
 Blockly.Msg["XIAOBAI_MAX31865_INIT"] = "MAX31865";
 Blockly.Msg["XIAOBAI_MAX31865_CS_PIN"] = "initialize CS pin";
 Blockly.Msg["XIAOBAI_MAX31865_PT_TYPE"] = "type";
-Blockly.Msg["XIAOBAI_MAX31865_INIT_TOOLTIP"] = "Initialize MAX31865 PT100/PT1000 temperature sensor (hardware SPI)";
+Blockly.Msg["XIAOBAI_MAX31865_INIT_TOOLTIP"] = "Initialize MAX31865 PT100/PT1000 temperature sensor (software SPI)";
+
+Blockly.Msg["XIAOBAI_MAX31865_WIRE_TYPE"] = "wires";
+Blockly.Msg["XIAOBAI_MAX31865_2WIRE"] = "2-wire";
+Blockly.Msg["XIAOBAI_MAX31865_3WIRE"] = "3-wire";
+Blockly.Msg["XIAOBAI_MAX31865_4WIRE"] = "4-wire";
 
 Blockly.Msg["XIAOBAI_MAX31865_READ"] = "MAX31865 read temperature";
 Blockly.Msg["XIAOBAI_MAX31865_CELSIUS"] = "(°C)";

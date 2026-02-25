@@ -6,7 +6,12 @@ Blockly.Msg["MAX31865"] = "MAX31865 溫度感測器";
 Blockly.Msg["XIAOBAI_MAX31865_INIT"] = "MAX31865";
 Blockly.Msg["XIAOBAI_MAX31865_CS_PIN"] = "初始化 CS腳位";
 Blockly.Msg["XIAOBAI_MAX31865_PT_TYPE"] = "類型";
-Blockly.Msg["XIAOBAI_MAX31865_INIT_TOOLTIP"] = "初始化 MAX31865 PT100/PT1000 溫度感測器（使用硬體 SPI）";
+Blockly.Msg["XIAOBAI_MAX31865_INIT_TOOLTIP"] = "初始化 MAX31865 PT100/PT1000 溫度感測器（使用軟體 SPI）";
+
+Blockly.Msg["XIAOBAI_MAX31865_WIRE_TYPE"] = "線數";
+Blockly.Msg["XIAOBAI_MAX31865_2WIRE"] = "2線";
+Blockly.Msg["XIAOBAI_MAX31865_3WIRE"] = "3線";
+Blockly.Msg["XIAOBAI_MAX31865_4WIRE"] = "4線";
 
 Blockly.Msg["XIAOBAI_MAX31865_READ"] = "MAX31865 讀取溫度";
 Blockly.Msg["XIAOBAI_MAX31865_CELSIUS"] = "(°C)";
