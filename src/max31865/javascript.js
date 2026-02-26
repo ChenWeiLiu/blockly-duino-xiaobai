@@ -33,7 +33,7 @@ Blockly.Arduino['xiaobai_max31865_init'] = function (block) {
     // Create MAX31865 object (software SPI with CS, SDI, SDO, SCK pins)
     Blockly.Arduino.definitions_['define_max31865'] = 'Adafruit_MAX31865 max31865(' + csPin + ', ' + sdiPin + ', ' + sdoPin + ', ' + sckPin + ');';
     Blockly.Arduino.definitions_['define_max31865_rnominal'] = '#define RNOMINAL ' + rNominal;
-    Blockly.Arduino.definitions_['define_max31865_rref'] = '#define RREF ' + rRefValue + '.0';
+    Blockly.Arduino.definitions_['define_max31865_rref'] = '#define RREF ' + (String(rRefValue).indexOf('.') === -1 ? rRefValue + '.0' : rRefValue);
 
     // Helper function: clear fault then read temperature
     Blockly.Arduino.definitions_['func_max31865_read_temp'] =
