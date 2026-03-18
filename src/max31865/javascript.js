@@ -35,28 +35,19 @@ Blockly.Arduino['xiaobai_max31865_init'] = function (block) {
     Blockly.Arduino.definitions_['define_max31865_rnominal'] = '#define RNOMINAL ' + rNominal;
     Blockly.Arduino.definitions_['define_max31865_rref'] = '#define RREF ' + (String(rRefValue).indexOf('.') === -1 ? rRefValue + '.0' : rRefValue);
 
-    // Helper function: clear fault then read temperature
-    Blockly.Arduino.definitions_['func_max31865_read_temp'] =
-        'float max31865_readTemp() {\n' +
-        '  max31865.clearFault();\n' +
-        '  return max31865.temperature(RNOMINAL, RREF);\n' +
-        '}';
-
     // Initialize in setup with selected wire type
-    var setupCode = 'max31865.begin(' + wireConst + ');\n';
-    setupCode += '  max31865.clearFault();';
-    Blockly.Arduino.setups_['setup_max31865'] = setupCode;
+    Blockly.Arduino.setups_['setup_max31865'] = 'max31865.begin(' + wireConst + ');';
 
     return '';
 };
 
 Blockly.Arduino['xiaobai_max31865_read_celsius'] = function (block) {
-    var code = 'max31865_readTemp()';
+    var code = 'max31865.temperature(RNOMINAL, RREF)';
     return [code, Blockly.Arduino.ORDER_ATOMIC];
 };
 
 Blockly.Arduino['xiaobai_max31865_read_fahrenheit'] = function (block) {
-    var code = '(max31865_readTemp() * 9.0 / 5.0 + 32.0)';
+    var code = '(max31865.temperature(RNOMINAL, RREF) * 9.0 / 5.0 + 32.0)';
     return [code, Blockly.Arduino.ORDER_ATOMIC];
 };
 
