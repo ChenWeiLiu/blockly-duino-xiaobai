@@ -758,6 +758,52 @@
     </category>
     
     <!-- ========== MAX31865 PT100 溫度感測器模組 ========== -->
+
+
+
+
+    <category id="category_tjc3224t124_display" name="%{BKY_TJC3224T124_DISPLAY}" colour="%{BKY_XIAOBAI_HUE}">
+        <block type="xiaobai_tjc3224_init"></block>
+        <block type="xiaobai_tjc3224_set_text">
+            <value name="TEXT">
+                <shadow type="text">
+                    <field name="TEXT">Hello TJC3224</field>
+                </shadow>
+            </value>
+        </block>
+        <block type="xiaobai_tjc3224_set_number">
+            <value name="VALUE">
+                <shadow type="math_number">
+                    <field name="NUM">123</field>
+                </shadow>
+            </value>
+        </block>
+        <block type="xiaobai_tjc3224_set_page"></block>
+        <block type="xiaobai_tjc3224_set_visibility"></block>
+        <block type="xiaobai_tjc3224_set_progress">
+            <value name="VALUE">
+                <shadow type="math_number">
+                    <field name="NUM">80</field>
+                </shadow>
+            </value>
+        </block>
+        <block type="xiaobai_tjc3224_on_touch"></block>
+        <block type="xiaobai_tjc3224_touch_id"></block>
+        <block type="xiaobai_tjc3224_touch_page"></block>
+    </category>
+    <category id="category_ili9486_spi" name="%{BKY_ILI9486_SPI}" colour="%{BKY_XIAOBAI_HUE}">
+        <block type="xiaobai_ili9486_init"></block>
+        <block type="xiaobai_ili9486_fill_screen"></block>
+        <block type="xiaobai_ili9486_draw_text">
+            <value name="TEXT">
+                <shadow type="text">
+                    <field name="TEXT">ESP-NOW</field>
+                </shadow>
+            </value>
+        </block>
+        <block type="xiaobai_ili9486_draw_line"></block>
+        <block type="xiaobai_ili9486_fill_rect"></block>
+    </category>
     <category id="category_max31865" name="%{BKY_MAX31865}" colour="%{BKY_XIAOBAI_HUE}">
         <!-- MAX31865 初始化 -->
         <block type="xiaobai_max31865_init">

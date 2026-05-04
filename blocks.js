@@ -29,7 +29,9 @@
         basePath + 'src/tjc_display/blocks.js',
         basePath + 'src/ina219/blocks.js',
         basePath + 'src/tcs3200/blocks.js',
-        basePath + 'src/max31865/blocks.js'
+        basePath + 'src/max31865/blocks.js',
+        basePath + 'src/ili9486_spi/blocks.js',
+        basePath + 'src/tjc3224t124/blocks.js'
     ];
 
     for (var i = 0; i < scripts.length; i++) {
