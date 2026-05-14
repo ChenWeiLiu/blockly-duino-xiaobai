@@ -11,6 +11,18 @@ Blockly.Blocks['xiaobai_ili9488_init'] = {
                 ["2", "2"],
                 ["3", "3"]
             ]), "ROT");
+        this.appendDummyInput()
+            .appendField(Blockly.Msg.XIAOBAI_ILI9488_PINS)
+            .appendField("SCK")
+            .appendField(new Blockly.FieldNumber(18, 0, 33, 1), "SCK")
+            .appendField("MOSI")
+            .appendField(new Blockly.FieldNumber(23, 0, 33, 1), "MOSI")
+            .appendField("CS")
+            .appendField(new Blockly.FieldNumber(5, 0, 33, 1), "CS")
+            .appendField("DC")
+            .appendField(new Blockly.FieldNumber(2, 0, 33, 1), "DC")
+            .appendField("RST")
+            .appendField(new Blockly.FieldNumber(4, -1, 33, 1), "RST");
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
         this.setColour(Blockly.Msg.XIAOBAI_HUE);

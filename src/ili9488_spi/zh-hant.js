@@ -4,7 +4,8 @@ Blockly.Msg["BKY_ILI9488_SPI"] = "ILI9488 SPI 螢幕";
 
 Blockly.Msg["XIAOBAI_ILI9488_INIT"] = "ILI9488 SPI 初始化";
 Blockly.Msg["XIAOBAI_ILI9488_ROTATION"] = "旋轉";
-Blockly.Msg["XIAOBAI_ILI9488_INIT_TOOLTIP"] = "初始化 ILI9488 SPI 螢幕（使用 TFT_eSPI）";
+Blockly.Msg["XIAOBAI_ILI9488_PINS"] = "腳位";
+Blockly.Msg["XIAOBAI_ILI9488_INIT_TOOLTIP"] = "初始化 ILI9488 SPI 螢幕（使用 TFT_eSPI），並在上傳前套用這裡設定的 ESP32 腳位";
 
 Blockly.Msg["XIAOBAI_ILI9488_FILL_SCREEN"] = "ILI9488 清屏 顏色";
 Blockly.Msg["XIAOBAI_ILI9488_FILL_SCREEN_TOOLTIP"] = "將整個螢幕填滿指定顏色";

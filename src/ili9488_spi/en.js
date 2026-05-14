@@ -4,7 +4,8 @@ Blockly.Msg["BKY_ILI9488_SPI"] = "ILI9488 SPI Display";
 
 Blockly.Msg["XIAOBAI_ILI9488_INIT"] = "ILI9488 SPI init";
 Blockly.Msg["XIAOBAI_ILI9488_ROTATION"] = "rotation";
-Blockly.Msg["XIAOBAI_ILI9488_INIT_TOOLTIP"] = "Initialize ILI9488 SPI display with TFT_eSPI";
+Blockly.Msg["XIAOBAI_ILI9488_PINS"] = "pins";
+Blockly.Msg["XIAOBAI_ILI9488_INIT_TOOLTIP"] = "Initialize ILI9488 SPI display with TFT_eSPI and apply these ESP32 pins before upload";
 
 Blockly.Msg["XIAOBAI_ILI9488_FILL_SCREEN"] = "ILI9488 fill screen color";
 Blockly.Msg["XIAOBAI_ILI9488_FILL_SCREEN_TOOLTIP"] = "Fill screen with selected color";

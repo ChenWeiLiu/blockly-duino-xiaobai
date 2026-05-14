@@ -2,8 +2,13 @@
 
 Blockly.Arduino['xiaobai_ili9488_init'] = function (block) {
     var rot = block.getFieldValue('ROT');
+    var sck = block.getFieldValue('SCK') || '18';
+    var mosi = block.getFieldValue('MOSI') || '23';
+    var cs = block.getFieldValue('CS') || '5';
+    var dc = block.getFieldValue('DC') || '2';
+    var rst = block.getFieldValue('RST') || '4';
 
-    Blockly.Arduino.definitions_['marker_ili9488_spi'] = '// BlocklyduinoF2: ILI9488_SPI';
+    Blockly.Arduino.definitions_['marker_ili9488_spi'] = '// BlocklyduinoF2: ILI9488_SPI SCK=' + sck + ' MOSI=' + mosi + ' CS=' + cs + ' DC=' + dc + ' RST=' + rst;
     Blockly.Arduino.definitions_['include_tft_espi'] = '#include <TFT_eSPI.h>';
     Blockly.Arduino.definitions_['define_tft_ili9488'] = 'TFT_eSPI tft = TFT_eSPI();';
 
