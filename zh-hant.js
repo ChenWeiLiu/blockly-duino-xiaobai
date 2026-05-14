@@ -35,6 +35,7 @@ Blockly.Msg["XIAOBAI_HUE"] = "160";
         basePath + 'src/tcs3200/zh-hant.js',
         basePath + 'src/max31865/zh-hant.js',
         basePath + 'src/ili9486_spi/zh-hant.js',
+        basePath + 'src/ili9488_spi/zh-hant.js',
         basePath + 'src/tjc3224t124/zh-hant.js'
     ];
 

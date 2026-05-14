@@ -804,6 +804,21 @@
         <block type="xiaobai_ili9486_draw_line"></block>
         <block type="xiaobai_ili9486_fill_rect"></block>
     </category>
+
+
+    <category id="category_ili9488_spi" name="%{BKY_ILI9488_SPI}" colour="%{BKY_XIAOBAI_HUE}">
+        <block type="xiaobai_ili9488_init"></block>
+        <block type="xiaobai_ili9488_fill_screen"></block>
+        <block type="xiaobai_ili9488_draw_text">
+            <value name="TEXT">
+                <shadow type="text">
+                    <field name="TEXT">ESP-NOW</field>
+                </shadow>
+            </value>
+        </block>
+        <block type="xiaobai_ili9488_draw_line"></block>
+        <block type="xiaobai_ili9488_fill_rect"></block>
+    </category>
     <category id="category_max31865" name="%{BKY_MAX31865}" colour="%{BKY_XIAOBAI_HUE}">
         <!-- MAX31865 初始化 -->
         <block type="xiaobai_max31865_init">

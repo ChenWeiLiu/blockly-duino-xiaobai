@@ -10,4 +10,5 @@
 <category><name>%{BKY_TJC_DISPLAY}</name><lang>TJC Display</lang></category>
 <category><name>%{BKY_ILI9486_SPI}</name><lang>ILI9486 SPI Display</lang></category>
 <category><name>%{BKY_TJC3224T124_DISPLAY}</name><lang>TJC3224T124 Display</lang></category>
+<category><name>%{BKY_ILI9488_SPI}</name><lang>ILI9488 SPI Display</lang></category>
 </xml>

@@ -31,6 +31,7 @@
         basePath + 'src/tcs3200/blocks.js',
         basePath + 'src/max31865/blocks.js',
         basePath + 'src/ili9486_spi/blocks.js',
+        basePath + 'src/ili9488_spi/blocks.js',
         basePath + 'src/tjc3224t124/blocks.js'
     ];
 

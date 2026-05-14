@@ -31,6 +31,7 @@
         basePath + 'src/tcs3200/javascript.js',
         basePath + 'src/max31865/javascript.js',
         basePath + 'src/ili9486_spi/javascript.js',
+        basePath + 'src/ili9488_spi/javascript.js',
         basePath + 'src/tjc3224t124/javascript.js'
     ];
 
