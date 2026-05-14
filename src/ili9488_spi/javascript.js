@@ -3,11 +3,13 @@
 Blockly.Arduino['xiaobai_ili9488_init'] = function (block) {
     var rot = block.getFieldValue('ROT');
 
+    Blockly.Arduino.definitions_['marker_ili9488_spi'] = '// BlocklyduinoF2: ILI9488_SPI';
     Blockly.Arduino.definitions_['include_tft_espi'] = '#include <TFT_eSPI.h>';
     Blockly.Arduino.definitions_['define_tft_ili9488'] = 'TFT_eSPI tft = TFT_eSPI();';
 
     Blockly.Arduino.setups_['setup_tft_init'] = 'tft.init();';
     Blockly.Arduino.setups_['setup_tft_rotation'] = 'tft.setRotation(' + rot + ');';
+    Blockly.Arduino.setups_['setup_tft_clear'] = 'tft.fillScreen(TFT_BLACK);';
     Blockly.Arduino.setups_['setup_tft_text_defaults'] = 'tft.setTextWrap(false, false);';
 
     return '';
