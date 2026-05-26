@@ -13,6 +13,8 @@ Blockly.Msg["XIAOBAI_ILI9486_DRAW_TEXT"] = "ILI9486 draw text";
 Blockly.Msg["XIAOBAI_ILI9486_SIZE"] = "size";
 Blockly.Msg["XIAOBAI_ILI9486_COLOR"] = "color";
 Blockly.Msg["XIAOBAI_ILI9486_DRAW_TEXT_TOOLTIP"] = "Draw text at position";
+Blockly.Msg["XIAOBAI_ILI9486_SET_CHINESE_FONT_SIZE"] = "ILI9486 Chinese font size";
+Blockly.Msg["XIAOBAI_ILI9486_SET_CHINESE_FONT_SIZE_TOOLTIP"] = "Set Chinese font size. The requested size is mapped to the nearest supported WQY font size from 12 to 16.";
 
 Blockly.Msg["XIAOBAI_ILI9486_DRAW_LINE"] = "ILI9486 draw line";
 Blockly.Msg["XIAOBAI_ILI9486_DRAW_LINE_TOOLTIP"] = "Draw a line between two points";

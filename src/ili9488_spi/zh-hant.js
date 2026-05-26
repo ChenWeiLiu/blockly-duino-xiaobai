@@ -14,6 +14,8 @@ Blockly.Msg["XIAOBAI_ILI9488_DRAW_TEXT"] = "ILI9488 顯示文字";
 Blockly.Msg["XIAOBAI_ILI9488_SIZE"] = "字體大小";
 Blockly.Msg["XIAOBAI_ILI9488_COLOR"] = "顏色";
 Blockly.Msg["XIAOBAI_ILI9488_DRAW_TEXT_TOOLTIP"] = "在指定座標顯示文字";
+Blockly.Msg["XIAOBAI_ILI9488_SET_CHINESE_FONT_SIZE"] = "ILI9488 設定中文字體大小";
+Blockly.Msg["XIAOBAI_ILI9488_SET_CHINESE_FONT_SIZE_TOOLTIP"] = "設定中文字體大小。輸入值會對應到最接近的 WQY 中文字型大小，支援 12 到 16。";
 
 Blockly.Msg["XIAOBAI_ILI9488_DRAW_LINE"] = "ILI9488 畫線";
 Blockly.Msg["XIAOBAI_ILI9488_DRAW_LINE_TOOLTIP"] = "在兩點之間畫線";

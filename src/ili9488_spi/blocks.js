@@ -64,10 +64,6 @@ Blockly.Blocks['xiaobai_ili9488_draw_text'] = {
             .appendField(new Blockly.FieldNumber(0, 0), "X")
             .appendField("y")
             .appendField(new Blockly.FieldNumber(0, 0), "Y")
-            .appendField(Blockly.Msg.XIAOBAI_ILI9488_SIZE)
-            .appendField(new Blockly.FieldDropdown([
-                ["1", "1"], ["2", "2"], ["4", "4"]
-            ]), "SIZE")
             .appendField(Blockly.Msg.XIAOBAI_ILI9488_COLOR)
             .appendField(new Blockly.FieldDropdown([
                 [Blockly.Msg.XIAOBAI_ILI9488_WHITE, "TFT_WHITE"],
@@ -81,6 +77,19 @@ Blockly.Blocks['xiaobai_ili9488_draw_text'] = {
         this.setNextStatement(true, null);
         this.setColour(Blockly.Msg.XIAOBAI_HUE);
         this.setTooltip(Blockly.Msg.XIAOBAI_ILI9488_DRAW_TEXT_TOOLTIP);
+        this.setHelpUrl('');
+    }
+};
+
+Blockly.Blocks['xiaobai_ili9488_set_chinese_font_size'] = {
+    init: function () {
+        this.appendDummyInput()
+            .appendField(Blockly.Msg.XIAOBAI_ILI9488_SET_CHINESE_FONT_SIZE)
+            .appendField(new Blockly.FieldNumber(16, 12, 16, 1), "SIZE");
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
+        this.setColour(Blockly.Msg.XIAOBAI_HUE);
+        this.setTooltip(Blockly.Msg.XIAOBAI_ILI9488_SET_CHINESE_FONT_SIZE_TOOLTIP);
         this.setHelpUrl('');
     }
 };

@@ -794,6 +794,7 @@
     <category id="category_ili9486_spi" name="%{BKY_ILI9486_SPI}" colour="%{BKY_XIAOBAI_HUE}">
         <block type="xiaobai_ili9486_init"></block>
         <block type="xiaobai_ili9486_fill_screen"></block>
+        <block type="xiaobai_ili9486_set_chinese_font_size"></block>
         <block type="xiaobai_ili9486_draw_text">
             <value name="TEXT">
                 <shadow type="text">
@@ -809,6 +810,7 @@
     <category id="category_ili9488_spi" name="%{BKY_ILI9488_SPI}" colour="%{BKY_XIAOBAI_HUE}">
         <block type="xiaobai_ili9488_init"></block>
         <block type="xiaobai_ili9488_fill_screen"></block>
+        <block type="xiaobai_ili9488_set_chinese_font_size"></block>
         <block type="xiaobai_ili9488_draw_text">
             <value name="TEXT">
                 <shadow type="text">
