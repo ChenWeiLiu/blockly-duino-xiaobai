@@ -83,13 +83,21 @@ Blockly.Blocks['xiaobai_ili9488_draw_text'] = {
 
 Blockly.Blocks['xiaobai_ili9488_set_chinese_font_size'] = {
     init: function () {
+        var label = Blockly.Msg.XIAOBAI_ILI9488_SET_CHINESE_FONT_SIZE || "ILI9488 設定中文字體大小";
+        var tooltip = Blockly.Msg.XIAOBAI_ILI9488_SET_CHINESE_FONT_SIZE_TOOLTIP || "設定中文字體大小。輸入值會對應到最接近的 WQY 中文字型大小，支援 12 到 16。";
         this.appendDummyInput()
-            .appendField(Blockly.Msg.XIAOBAI_ILI9488_SET_CHINESE_FONT_SIZE)
-            .appendField(new Blockly.FieldNumber(16, 12, 16, 1), "SIZE");
+            .appendField(label)
+            .appendField(new Blockly.FieldDropdown([
+                ["12", "12"],
+                ["13", "13"],
+                ["14", "14"],
+                ["15", "15"],
+                ["16", "16"]
+            ]), "SIZE");
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
         this.setColour(Blockly.Msg.XIAOBAI_HUE);
-        this.setTooltip(Blockly.Msg.XIAOBAI_ILI9488_SET_CHINESE_FONT_SIZE_TOOLTIP);
+        this.setTooltip(tooltip);
         this.setHelpUrl('');
     }
 };
