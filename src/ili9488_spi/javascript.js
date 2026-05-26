@@ -90,7 +90,20 @@ Blockly.Arduino['xiaobai_ili9488_init'] = function (block) {
         '      return font;\n' +
         '    }\n' +
         '  }\n' +
-        '  return ili9488GetChineseFontBySize(size, 0);\n' +
+        '  {\n' +
+        '    const uint8_t* const fallbackFonts[] = {\n' +
+        '      u8g2_font_unifont_t_chinese1,\n' +
+        '      u8g2_font_unifont_t_chinese2,\n' +
+        '      u8g2_font_unifont_t_chinese3\n' +
+        '    };\n' +
+        '    for (uint8_t i = 0; i < 3; ++i) {\n' +
+        '      u8g2.setFont(fallbackFonts[i]);\n' +
+        '      if (u8g2_IsGlyph(&u8g2.u8g2, codepoint)) {\n' +
+        '        return fallbackFonts[i];\n' +
+        '      }\n' +
+        '    }\n' +
+        '  }\n' +
+        '  return u8g2_font_unifont_t_chinese1;\n' +
         '}\n' +
         '\n' +
         'void ili9488DrawUtf8(String text, int16_t x, int16_t y, uint16_t color) {\n' +
