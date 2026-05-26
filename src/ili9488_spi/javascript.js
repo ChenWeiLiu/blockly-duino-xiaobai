@@ -14,66 +14,18 @@ Blockly.Arduino['xiaobai_ili9488_init'] = function (block) {
     Blockly.Arduino.definitions_['define_tft_ili9488'] = 'TFT_eSPI tft = TFT_eSPI();';
     Blockly.Arduino.definitions_['define_tft_ili9488_u8g2'] = 'U8g2_for_TFT_eSPI u8g2;';
     Blockly.Arduino.definitions_['define_tft_ili9488_utf8_helpers'] =
-        'const uint8_t* const ili9488UnicodeFonts[] = {\n' +
-        '  u8g2_font_unifont_t_chinese1,\n' +
-        '  u8g2_font_unifont_t_chinese2,\n' +
-        '  u8g2_font_unifont_t_chinese3\n' +
-        '};\n' +
-        '\n' +
-        'static uint32_t ili9488DecodeUtf8(const char *s, uint8_t *bytesUsed) {\n' +
-        '  uint8_t c0 = (uint8_t)s[0];\n' +
-        '  if (c0 < 0x80) {\n' +
-        '    *bytesUsed = 1;\n' +
-        '    return c0;\n' +
-        '  }\n' +
-        '  if ((c0 & 0xE0) == 0xC0 && s[1] != 0) {\n' +
-        '    *bytesUsed = 2;\n' +
-        '    return ((uint32_t)(c0 & 0x1F) << 6) | ((uint8_t)s[1] & 0x3F);\n' +
-        '  }\n' +
-        '  if ((c0 & 0xF0) == 0xE0 && s[1] != 0 && s[2] != 0) {\n' +
-        '    *bytesUsed = 3;\n' +
-        '    return ((uint32_t)(c0 & 0x0F) << 12) | (((uint8_t)s[1] & 0x3F) << 6) | ((uint8_t)s[2] & 0x3F);\n' +
-        '  }\n' +
-        '  if ((c0 & 0xF8) == 0xF0 && s[1] != 0 && s[2] != 0 && s[3] != 0) {\n' +
-        '    *bytesUsed = 4;\n' +
-        '    return ((uint32_t)(c0 & 0x07) << 18) | (((uint8_t)s[1] & 0x3F) << 12) | (((uint8_t)s[2] & 0x3F) << 6) | ((uint8_t)s[3] & 0x3F);\n' +
-        '  }\n' +
-        '  *bytesUsed = 1;\n' +
-        '  return 0x003F;\n' +
-        '}\n' +
-        '\n' +
-        'static const uint8_t* ili9488SelectUnicodeFont(uint16_t codepoint) {\n' +
-        '  for (uint8_t i = 0; i < sizeof(ili9488UnicodeFonts) / sizeof(ili9488UnicodeFonts[0]); ++i) {\n' +
-        '    u8g2.setFont(ili9488UnicodeFonts[i]);\n' +
-        '    if (u8g2_IsGlyph(&u8g2.u8g2, codepoint)) {\n' +
-        '      return ili9488UnicodeFonts[i];\n' +
-        '    }\n' +
-        '  }\n' +
-        '  return ili9488UnicodeFonts[0];\n' +
-        '}\n' +
-        '\n' +
         'void ili9488DrawUtf8(String text, int16_t x, int16_t y, uint16_t color) {\n' +
-        '  const char *ptr = text.c_str();\n' +
-        '  int16_t cursorX = x;\n' +
-        '  const uint8_t *activeFont = ili9488UnicodeFonts[0];\n' +
+        '  static uint8_t fontIndex = 0;\n' +
+        '  const uint8_t* const ili9488UnicodeFonts[] = {\n' +
+        '    u8g2_font_unifont_t_chinese1,\n' +
+        '    u8g2_font_unifont_t_chinese2,\n' +
+        '    u8g2_font_unifont_t_chinese3\n' +
+        '  };\n' +
         '  u8g2.setForegroundColor(color);\n' +
         '  u8g2.setBackgroundColor(TFT_BLACK);\n' +
-        '  u8g2.setFont(activeFont);\n' +
-        '  int16_t baselineY = y + u8g2.getFontAscent();\n' +
-        '\n' +
-        '  while (*ptr) {\n' +
-        '    uint8_t bytesUsed = 0;\n' +
-        '    uint32_t codepoint32 = ili9488DecodeUtf8(ptr, &bytesUsed);\n' +
-        '    uint16_t codepoint = codepoint32 > 0xFFFF ? 0x003F : (uint16_t)codepoint32;\n' +
-        '    const uint8_t *font = ili9488SelectUnicodeFont(codepoint);\n' +
-        '    if (font != activeFont) {\n' +
-        '      activeFont = font;\n' +
-        '      u8g2.setFont(activeFont);\n' +
-        '      baselineY = y + u8g2.getFontAscent();\n' +
-        '    }\n' +
-        '    cursorX += u8g2.drawGlyph(cursorX, baselineY, codepoint);\n' +
-        '    ptr += bytesUsed;\n' +
-        '  }\n' +
+        '  u8g2.setFont(ili9488UnicodeFonts[fontIndex]);\n' +
+        '  u8g2.drawUTF8(x, y + 16, text.c_str());\n' +
+        '  fontIndex = (fontIndex + 1) % 3;\n' +
         '}\n';
 
     Blockly.Arduino.setups_['setup_tft_init'] = 'tft.init();';
